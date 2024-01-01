@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+// import "./globals.css";
 import FreelancerLayout from "@/layout/freelancer/FreelancerLayout";
 import { Provider } from "react-redux";
 import { store } from "@/features/store/store";
@@ -24,6 +24,7 @@ export default function RootLayout({
       <FormContextProvider>
         <html lang="en">
           <body className={inter.className}>
+            Freelance Layout.
             <FreelancerLayout>{children}</FreelancerLayout>
           </body>
         </html>

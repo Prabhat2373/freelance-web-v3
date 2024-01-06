@@ -1,10 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import DotsLoading from "../ui/DotsLoading";
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: "outlined" | "filled" | "outline-hover";
   color?: string;
   width?: string;
+  isLoading?: boolean;
 }
 
 const Button = ({
@@ -13,6 +15,7 @@ const Button = ({
   color = "red",
   disabled = false,
   width,
+  isLoading,
   ...props
 }: IButtonProps) => {
   let buttonStyles: React.CSSProperties = {
@@ -75,9 +78,14 @@ const Button = ({
     <motion.button
       style={buttonStyles}
       {...props}
-      whileTap={{ scale: 0.9 }}
-      className={`${variant === "outlined" ? `hover:bg-${color}-500` : ""}`}
+      whileTap={{ scale: isLoading ? 1 : 0.9 }}
+      // disabled={isLoading || props.disabled}
+      disabled={isLoading}
+      className={`${variant === "outlined" ? `hover:bg-${color}-500` : ""} ${
+        isLoading ? "opacity-50 cursor-not-allowed" : ""
+      }`}
     >
+      {<DotsLoading />} {"  "}
       {children}
     </motion.button>
   );

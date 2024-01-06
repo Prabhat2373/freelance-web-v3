@@ -25,7 +25,6 @@ export default function RootLayout({
       <FormContextProvider>
         <html lang="en">
           <body className={inter.className}>
-            Client Layout.
             <ClientLayout>{children}</ClientLayout>
           </body>
         </html>

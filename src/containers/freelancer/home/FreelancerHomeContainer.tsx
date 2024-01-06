@@ -1,17 +1,20 @@
 "use client";
 
+import BestMatchIndex from "@/app/fl/dashboard/@views/bestmatch/page";
+import Button from "@/components/buttons/Button";
 import SearchBox from "@/components/home/SearchBox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RootState } from "@/features/store/store";
-import React from "react";
 import { useSelector } from "react-redux";
-import BestMatch from "../jobs/BestMatch";
 import RecentJobs from "../jobs/RecentJobs";
 import SavedJobs from "../jobs/SavedJobs";
-import Button from "@/components/buttons/Button";
+import Link from "next/link";
 
-const FreelancerHomeContainer = () => {
+const FreelancerHomeContainer = (props) => {
   const { user } = useSelector((state: RootState) => state.user);
+  const { views } = props;
+  console.log("views", views);
+
   return (
     <div className="relative">
       <div className="bg-blue h-[320px] w-full absolute top-0"></div>
@@ -39,13 +42,13 @@ const FreelancerHomeContainer = () => {
               </div>
               <Tabs defaultValue="best-match" className="">
                 <TabsList>
-                  <TabsTrigger value="best-match">Best match</TabsTrigger>
+                  <Link href={"/fl/dashboard/bestmatch"}>
+                    <TabsTrigger value="best-match">Best match</TabsTrigger>
+                  </Link>
                   <TabsTrigger value="recent">Recent</TabsTrigger>
                   <TabsTrigger value="Saved">Saved</TabsTrigger>
                 </TabsList>
-                <TabsContent value="best-match">
-                  <BestMatch />
-                </TabsContent>
+                <TabsContent value="best-match">{views}</TabsContent>
                 <TabsContent value="recent">
                   <RecentJobs />
                 </TabsContent>

@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "@/features/store/store";
 import { Providers } from "@/features/rtk/provider";
 import { FormContextProvider } from "@/contexts/FormContext";
+import GuestLayout from "@/layout/GuestLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,8 @@ export default function RootLayout({
       <FormContextProvider>
         <html lang="en">
           <body className={inter.className}>
-            <FreelancerLayout>{children}</FreelancerLayout>
+     
+            <GuestLayout>{children}</GuestLayout>
           </body>
         </html>
       </FormContextProvider>

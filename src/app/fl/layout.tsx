@@ -24,7 +24,6 @@ export default function RootLayout({
       <FormContextProvider>
         <html lang="en">
           <body className={inter.className}>
-            Freelance Layout.
             <FreelancerLayout>{children}</FreelancerLayout>
           </body>
         </html>

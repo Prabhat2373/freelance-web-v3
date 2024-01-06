@@ -186,5 +186,6 @@ export const FormContextProvider = ({ children }) => {
 };
 
 export const useOnboardingForm = () => {
+  if (!FormContext) console.log("No useOnboardingForm Found");
   return useContext(FormContext);
 };

@@ -81,11 +81,11 @@ const Button = ({
       whileTap={{ scale: isLoading ? 1 : 0.9 }}
       // disabled={isLoading || props.disabled}
       disabled={isLoading}
-      className={`${variant === "outlined" ? `hover:bg-${color}-500` : ""} ${
-        isLoading ? "opacity-50 cursor-not-allowed" : ""
-      }`}
+      className={`min-w-[150px] min-h-10 ${
+        variant === "outlined" ? `hover:bg-${color}-500` : ""
+      } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
     >
-      {<DotsLoading />} {"  "}
+      {<span className="loader mr-2" />}
       {children}
     </motion.button>
   );

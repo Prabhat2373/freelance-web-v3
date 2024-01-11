@@ -20,6 +20,7 @@ import { userApi } from "../rtk/app/userApi";
 import { rtkQueryErrorLogger } from "../rtk/rtkErrorHandler";
 import { mainApi } from "../rtk/app/mainApi";
 import { jobApi } from "../rtk/app/jobApi";
+import { mcqTestApi } from "../rtk/app/mcqTestApi";
 
 const persistConfig = {
   key: "root",
@@ -37,6 +38,7 @@ export const store = configureStore({
     [mainApi.reducerPath]: mainApi.reducer,
     [jobApi.reducerPath]: jobApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
+    [mcqTestApi.reducerPath]: mcqTestApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -48,6 +50,7 @@ export const store = configureStore({
       .concat(mainApi.middleware)
       .concat(userApi.middleware)
       .concat(rtkQueryErrorLogger)
+      .concat(mcqTestApi.middleware)
       .concat(jobApi.middleware),
 });
 

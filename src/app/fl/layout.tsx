@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 // import "./globals.css";
-import FreelancerLayout from "@/layout/freelancer/FreelancerLayout";
-import { Provider } from "react-redux";
-import { store } from "@/features/store/store";
-import { Providers } from "@/features/rtk/provider";
 import { FormContextProvider } from "@/contexts/FormContext";
+import { Providers } from "@/features/rtk/provider";
+import FreelancerLayout from "@/layout/freelancer/FreelancerLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -9,11 +9,13 @@ import { useSelector } from "react-redux";
 import RecentJobs from "../jobs/RecentJobs";
 import SavedJobs from "../jobs/SavedJobs";
 import Link from "next/link";
+import BestMatch from "../jobs/BestMatch";
 
 const FreelancerHomeContainer = (props) => {
   const { user } = useSelector((state: RootState) => state.user);
-  const { views } = props;
+  const { views, bestmatch } = props;
   console.log("views", views);
+  console.log("bestmatch", bestmatch);
 
   return (
     <div className="relative">
@@ -42,13 +44,13 @@ const FreelancerHomeContainer = (props) => {
               </div>
               <Tabs defaultValue="best-match" className="">
                 <TabsList>
-                  <Link href={"/fl/dashboard/bestmatch"}>
-                    <TabsTrigger value="best-match">Best match</TabsTrigger>
-                  </Link>
+                  <TabsTrigger value="best-match">Best match</TabsTrigger>
                   <TabsTrigger value="recent">Recent</TabsTrigger>
                   <TabsTrigger value="Saved">Saved</TabsTrigger>
                 </TabsList>
-                <TabsContent value="best-match">{views}</TabsContent>
+                <TabsContent value="best-match">
+                  <BestMatch />
+                </TabsContent>
                 <TabsContent value="recent">
                   <RecentJobs />
                 </TabsContent>

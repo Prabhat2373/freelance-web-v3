@@ -85,7 +85,7 @@ const Button = ({
         variant === "outlined" ? `hover:bg-${color}-500` : ""
       } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
     >
-      {<span className="loader mr-2" />}
+      {isLoading ? <span className="loader mr-2" /> : null}
       {children}
     </motion.button>
   );

@@ -10,7 +10,7 @@ export const baseQuery = retry(
     prepareHeaders: async (headers) => {
       headers.set(
         "Authorization",
-        `Bearer ${Cookies.get("token") || getToken()}`
+        `Bearer ${Cookies.get("token") ?? getToken()}`
       );
       headers.set("accept", "application/json");
       //   headers.set("Cookies", Cookies.get("token") || getToken())

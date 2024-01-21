@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import Footer from "../../components/layout/Footer";
 import Navbar from "../../components/layout/Navbar";
 import { useLazyGetAccountQuery } from "@/features/rtk/app/userApi";
+import { setStoreUser } from "@/features/slices/userReducer";
 
 const FreelancerLayout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
@@ -20,10 +21,12 @@ const FreelancerLayout = ({ children }: { children: ReactNode }) => {
   const [getProfile] = useLazyGetAccountQuery();
 
   useEffect(() => {
-    getProfile().then((res) => {
+    getProfile("").then((res) => {
       dispatch(setStoreUser(res?.data?.data));
     });
   }, []);
+
+  console.log("user", user);
 
   return (
     <div>

@@ -7,6 +7,7 @@ import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 
 import GuestLayout from "@/layout/GuestLayout";
+import Layout from "@/layout/Layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,7 @@ export default function RootLayout({
       <FormContextProvider>
         <html lang="en">
           <body className={inter.className}>
-            <GuestLayout>{children}</GuestLayout>
+            <Layout>{children}</Layout>
           </body>
         </html>
       </FormContextProvider>

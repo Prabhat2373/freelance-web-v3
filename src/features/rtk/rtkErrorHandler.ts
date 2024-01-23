@@ -1,3 +1,4 @@
+import { globalRoutes } from "@/constants/app.constant";
 import { isRejectedWithValue } from "@reduxjs/toolkit";
 import type { MiddlewareAPI, Middleware } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
@@ -19,7 +20,11 @@ export const rtkQueryErrorLogger: Middleware =
       console.log("errorr");
     }
     if (action.payload?.status === 401) {
-      toast.error(action?.payload?.data?.error);
+      toast.error(
+        action?.payload?.data?.error ?? action?.payload?.data?.message
+      );
+      if (!globalRoutes?.includes(window?.location?.pathname))
+        window.location.href = "/auth/login";
       console.log("errorr");
     }
 

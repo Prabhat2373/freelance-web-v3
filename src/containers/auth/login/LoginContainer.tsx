@@ -15,6 +15,7 @@ import { USER_TYPES } from "@/constants/app.constant";
 import Cookies from "js-cookie";
 import { LoginUser } from "@/features/slices/userReducer";
 import { useRouter } from "next/navigation";
+import { PasswordStrengthInput } from "@/components/inputs/ui/PasswordStrengthInput";
 // import { useNavigate } from "react-router-dom";
 
 const LoginContainer = () => {
@@ -35,7 +36,7 @@ const LoginContainer = () => {
     router.push("/fl");
   };
   const handleClientLogin = () => {
-    router.push("/fl/client");
+    router.push("/cl");
   };
 
   const handleLogin = async (data, history) => {
@@ -103,7 +104,7 @@ const LoginContainer = () => {
                     component={"div"}
                     className="text-red-500"
                   />
-                  <Field
+                  {/* <Field
                     as={InputField}
                     label="Password"
                     name="password"
@@ -116,8 +117,10 @@ const LoginContainer = () => {
                     name="password"
                     component={"div"}
                     className="text-red-500"
-                  />
-
+                  /> */}
+                  <div>
+                    <PasswordStrengthInput name={"password"} />
+                  </div>
                   <div>
                     <Button type="submit">Login</Button>
                   </div>

@@ -6,3 +6,5 @@ export enum USER_TYPES {
 export enum AUTH {
   TOKEN = "token",
 }
+
+export const globalRoutes: string[] = ["/auth/login", "/auth/register"];

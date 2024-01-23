@@ -5,7 +5,7 @@ const ClientIndex = () => {
   return (
     <div>
       ClientIndex
-      <Link href={"/fl"}>Freelancer</Link>
+      {/* <Link href={"/fl"}>Freelancer</Link> */}
     </div>
   );
 };

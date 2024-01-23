@@ -28,10 +28,15 @@ export const mainApi = createApi({
         params,
       }),
     }),
+  
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useLoginMutation, useRegisterMutation, useGetJobListingQuery } =
-  mainApi;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useGetJobListingQuery,
+
+} = mainApi;

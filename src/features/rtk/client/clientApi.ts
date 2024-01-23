@@ -1,21 +1,18 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { baseQuery } from "../baseQuery";
 
 // Define a service using a base URL and expected endpoints
 export const clientApi = createApi({
   reducerPath: "clientApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8001/api/v1/" }),
+  baseQuery: baseQuery,
   endpoints: (builder) => ({
-    createJob: builder.mutation<any, string>({
-      query: (body) => ({
-        url: `job/create`,
-        method: "POST",
-        body,
-      }),
-    }),
+  // getSkills:builder.query({
+
+  // })
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useCreateJobMutation } = clientApi;
+export const {} = clientApi;

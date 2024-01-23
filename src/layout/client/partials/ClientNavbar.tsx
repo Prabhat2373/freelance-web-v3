@@ -1,21 +1,17 @@
 "use client";
 // import { RootState } from "@/store";
 import { BellIcon, UserIcon } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 // import { Link } from "react-router-dom";
-import { ProfileMenu } from "../dropdown/ProfileMenu";
+// import { ProfileMenu } from "../dropdown/ProfileMenu";
+import { ProfileMenu } from "@/components/dropdown/ProfileMenu";
 import { RootState } from "@/features/store/store";
-import Link from "next/link";
 import HydrationWrapper from "@/hoc/app/HydrationWrapper";
-import {
-  FileButton,
-  useComputedColorScheme,
-  useMantineColorScheme,
-} from "@mantine/core";
-import { useColorScheme } from "@mantine/hooks";
+import { useComputedColorScheme, useMantineColorScheme } from "@mantine/core";
+import Link from "next/link";
 
-const Navbar = () => {
+const ClientNavbar = () => {
   // const =useColorScheme()
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme("light", {
@@ -28,7 +24,7 @@ const Navbar = () => {
     <HydrationWrapper>
       <nav className="bg-white flex justify-between px-16 py-4 items-center ">
         <div>
-          <Link href={"/fl"}>
+          <Link href={"/cl"}>
             <h1 className="text-[#FF4C4A] text-3xl font-bold">Logo</h1>
           </Link>
         </div>
@@ -42,31 +38,17 @@ const Navbar = () => {
         </button>
 
         <div>
-          {!isLoggedIn ? (
-            <div className="flex gap-10">
-              <Link href={"/fl/jobs"} className="text-base font-medium">
-                Find Talent
-              </Link>
-              <Link href={"/fl/jobs"} className="text-base font-medium">
-                Find work
-              </Link>
-              <Link href={"/fl/jobs"} className="text-base font-medium">
-                why us
-              </Link>
-            </div>
-          ) : (
-            <div className="flex gap-10">
-              {/* <li className="text-base font-medium"> */}
-              <Link href={"/fl/jobs"}>Browse projects</Link>
-              {/* </li> */}
-              {/* <li className="text-base font-medium"> */}
-              <Link href="/fl/jobs">My Jobs</Link>
-              {/* </li> */}
-              {/* <li className="text-base font-medium"> */}
-              <Link href={"/fl/messages"}>Messages</Link>
-              {/* </li> */}
-            </div>
-          )}
+          <div className="flex gap-10">
+            {/* <li className="text-base font-medium"> */}
+            <Link href={"/cl/jobs"}>Explore Freelancers</Link>
+            {/* </li> */}
+            {/* <li className="text-base font-medium"> */}
+            <Link href="/cl/jobs/create">Post Job</Link>
+            {/* </li> */}
+            {/* <li className="text-base font-medium"> */}
+            <Link href={"/cl/messages"}>Proposals</Link>
+            {/* </li> */}
+          </div>
         </div>
         <div className="flex gap-5">
           {!isLoggedIn ? (
@@ -101,4 +83,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default ClientNavbar;

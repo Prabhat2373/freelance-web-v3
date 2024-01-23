@@ -24,9 +24,9 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get("token");
 
   // if (request.nextUrl.pathname.startsWith("/")) {
-  if (token) {
-    return NextResponse.rewrite(new URL("/fl", request.url));
-  }
+  // if (token) {
+  //   return NextResponse.rewrite(new URL("/fl", request.url));
+  // }
   // }
 
   //   if (request.nextUrl.pathname.startsWith("/dashboard")) {

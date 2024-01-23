@@ -3,11 +3,15 @@ import { Providers } from "@/features/rtk/provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "@mantine/core/styles.css";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 
 import "react-toastify/dist/ReactToastify.css";
 
 import GuestLayout from "@/layout/GuestLayout";
 import Layout from "@/layout/Layout";
+import Head from "next/head";
+import ClientLayout from "@/layout/client/ClientLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,8 +29,16 @@ export default function RootLayout({
     <Providers>
       <FormContextProvider>
         <html lang="en">
+          <Head>
+            <ColorSchemeScript />
+          </Head>
           <body className={inter.className}>
-            <Layout>{children}</Layout>
+            <MantineProvider>
+              {/* <Layout>{children}</Layout> */}
+              <GuestLayout>{children}</GuestLayout>
+              {/* {children} */}
+              {/* <ClientLayout>{children}</ClientLayout> */}
+            </MantineProvider>
           </body>
         </html>
       </FormContextProvider>

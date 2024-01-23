@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 // import "./globals.css";
-import FreelancerLayout from "@/layout/freelancer/FreelancerLayout";
-import { Provider } from "react-redux";
-import { store } from "@/features/store/store";
-import { Providers } from "@/features/rtk/provider";
 import { FormContextProvider } from "@/contexts/FormContext";
+import { Providers } from "@/features/rtk/provider";
 import ClientLayout from "@/layout/client/ClientLayout";
+import "@mantine/core/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

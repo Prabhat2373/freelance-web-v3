@@ -1,20 +1,21 @@
 "use client";
 
-import React, { useMemo } from "react";
-import { Formik, Field, Form } from "formik";
+import { Field, Form, Formik } from "formik";
+import { useMemo } from "react";
 // import { useNavigate } from "react-router-dom";
-import { useOnboardingForm } from "@/contexts/FormContext";
-import InputField from "@/components/inputs/InputField";
-import { useRouter } from "next/navigation";
-import GuestLayout from "@/layout/GuestLayout";
 import Button from "@/components/buttons/Button";
 import Heading from "@/components/elements/Heading";
+import InputField from "@/components/inputs/InputField";
+import { PasswordStrengthInput } from "@/components/inputs/ui/PasswordStrengthInput";
+import { useOnboardingForm } from "@/contexts/FormContext";
 import { useRegisterMutation } from "@/features/rtk/app/mainApi";
+import { LoginUser } from "@/features/slices/userReducer";
 import { statusHandler } from "@/utils/utils";
 import { registerValidation } from "@/validators/registration/registrationValidator";
-import { useDispatch } from "react-redux";
-import { LoginUser } from "@/features/slices/userReducer";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { USER_TYPES } from "@/constants/app.constant";
 
 function RegisterContainer() {
   const { formData, setFormData } = useOnboardingForm();
@@ -46,7 +47,10 @@ function RegisterContainer() {
       dispatch(LoginUser(response?.data?.data));
       Cookies.set("token", response?.data?.token);
 
-      router.push("/onboarding/title");
+      if (data?.role === USER_TYPES.FREELANCER) {
+        router.push("/onboarding/title");
+      }
+      router.push("/cl");
     }
     console.log("response", response);
   };
@@ -75,6 +79,7 @@ function RegisterContainer() {
                     // value={values.first_name}
                     label="First Name"
                     error={errors?.first_name}
+                    placeholder="Enter First Name"
                   />
                 </div>
                 <div>
@@ -85,6 +90,7 @@ function RegisterContainer() {
                     // value={values.last_name}
                     label="Last Name"
                     error={errors?.last_name}
+                    placeholder="Enter Last Name"
                   />
                 </div>
               </div>
@@ -96,32 +102,48 @@ function RegisterContainer() {
                   // value={values.email}
                   label="email"
                   error={errors?.email}
+                  placeholder="Enter Email"
                 />
               </div>
               <div>
-                <InputField
-                  id="password"
-                  type="password"
-                  name="password"
-                  // onChange={handleChange}
-                  // value={values.password}
-                  label="password"
-                  error={errors?.password}
-                />
+                <PasswordStrengthInput name={"password"} />
               </div>
-              <div>
-                <label>
-                  <Field type="radio" name="role" value="freelancer" required />
+              <h1 className="text-lg font-semibold">{`I'm A:`}</h1>
+              <div className="flex gap-4 w-full my-3">
+                <label
+                  className={`flex gap-2 w-full border  transition-all duration-200 rounded-md text-lg font-medium border-opacity-50 cursor-pointer border-1 p-3 border-gray ${
+                    values?.role === "freelancer"
+                      ? "bg-pink-50 bg-opacity-50"
+                      : ""
+                  }`}
+                >
+                  <Field
+                    type="radio"
+                    name="role"
+                    className="accent-red-500 ml-3"
+                    value="freelancer"
+                    required
+                  />
                   Freelancer
                 </label>
 
-                <label>
-                  <Field type="radio" name="role" value="client" required />
+                <label
+                  className={`flex gap-2 w-full transition-all duration-200 border rounded-md text-lg font-medium border-opacity-50 cursor-pointer border-1 p-3 border-gray ${
+                    values?.role === "client" ? "bg-pink-50 bg-opacity-50" : ""
+                  }`}
+                >
+                  <Field
+                    type="radio"
+                    name="role"
+                    className="accent-red-500"
+                    value="client"
+                    required
+                  />
                   Client
                 </label>
               </div>
 
-              <Button type="submit" isLoading={true}>
+              <Button type="submit" isLoading={isRegistrationLoading}>
                 Submit
               </Button>
             </Form>

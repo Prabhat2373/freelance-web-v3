@@ -1,27 +1,35 @@
 // Need to use the React-specific entry point to import createApi
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { baseQuery } from "../baseQuery";
 
 // Define a service using a base URL and expected endpoints
 export const jobApi = createApi({
   reducerPath: "jobApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8001/api/v1/",
-    // credentials: "include",
-    prepareHeaders: (headers, { getState }) => {
-      headers.set(
-        "authorization",
-        `bearer ${String(localStorage.getItem("token"))}`
-      )
-      return headers
-    },
-  }),
+  baseQuery: baseQuery,
   endpoints: (builder) => ({
     getJobById: builder.query({
       query: (args) => ({
-        url: `job/${args}`,
+        url: `jobs/${args}`,
+      }),
+    }),
+    createJob: builder.mutation<any, string>({
+      query: (body) => ({
+        url: `jobs/create`,
+        method: "POST",
+        body,
+      }),
+    }),
+    getSkills: builder.query({
+      query: () => ({
+        url: `/skills`,
       }),
     }),
   }),
-})
+});
 
-export const { useGetJobByIdQuery } = jobApi
+export const {
+  useGetJobByIdQuery,
+  useCreateJobMutation,
+  useLazyGetSkillsQuery,
+  useGetSkillsQuery,
+} = jobApi;

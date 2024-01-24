@@ -1,15 +1,32 @@
 import Select from "@/components/ui/inputs/Select";
 import SelectSkills from "@/components/ui/inputs/select/SelectSkills";
-import { useCreateJobMutation } from "@/features/rtk/app/jobApi";
+import {
+  useCreateJobMutation,
+  useGetComplexitiesQuery,
+  useGetJobDurationsQuery,
+  useGetPaymentTypesQuery,
+} from "@/features/rtk/app/jobApi";
 import { isSuccess } from "@/utils/utils";
-import { Box, Container, Input, Paper, Radio, Textarea } from "@mantine/core";
+import {
+  Box,
+  Button,
+  Container,
+  Input,
+  Paper,
+  Radio,
+  Textarea,
+} from "@mantine/core";
 import { Form, Formik } from "formik";
 import React from "react";
 import { toast } from "react-toastify";
 import { Text } from "@mantine/core";
+import JobBudgetContainer from "@/components/jobs/JobBudgetContainer";
 
 const CreateJobForm = () => {
   const [createJob, { isLoading: isJobCreating }] = useCreateJobMutation();
+  const { data: projectDurations } = useGetJobDurationsQuery("");
+  const { data: complexitiesData } = useGetComplexitiesQuery("");
+  const { data: paymentTypes } = useGetPaymentTypesQuery("");
   const initialValues = {
     job_title: "",
     job_description: "",
@@ -34,7 +51,10 @@ const CreateJobForm = () => {
     }
   };
 
-  const projectEstimateDurations = ["small", "medium", "large"];
+  const projectEstimateDurations = projectDurations?.data;
+  const complexities = complexitiesData?.data;
+
+  console.log("projectEstimateDurations", projectEstimateDurations);
 
   const projectPaymentModes = ["fixed_price", "hourly"];
   return (
@@ -49,7 +69,7 @@ const CreateJobForm = () => {
                 <div>
                   <Input.Wrapper label="Job title">
                     <Input
-                      name="title"
+                      name="job_title"
                       onChange={handleChange}
                       placeholder="ex, need Web devloper for figma"
                     />
@@ -57,7 +77,7 @@ const CreateJobForm = () => {
                 </div>
                 <div>
                   <Textarea
-                    name="description"
+                    name="job_description"
                     label="Describe about the project"
                     onChange={handleChange}
                     placeholder="writer here"
@@ -72,38 +92,49 @@ const CreateJobForm = () => {
                     {projectEstimateDurations?.map((duration) => {
                       return (
                         <Radio
-                          key={duration}
-                          checked={values?.project_type === duration}
+                          key={duration?._id}
+                          checked={
+                            values?.expected_duration_id === duration?._id
+                          }
                           variant="outline"
                           onChange={(e) => {
                             console.log("event", e);
-                            setFieldValue("project_type", e.target?.name);
+                            setFieldValue(
+                              "expected_duration_id",
+                              e.target?.name
+                            );
                           }}
-                          name={duration}
-                          label={duration}
+                          name={duration?._id}
+                          label={duration?.duration}
                         />
                       );
                     })}
                   </div>
                 </div>
                 <div>
-                  <Text>Tell us about your budget?</Text>
-                  <div>
-                    {projectPaymentModes?.map((mode) => {
+                  <Text>Complexity</Text>
+                  <div className="flex gap-2">
+                    {complexities?.map((mode) => {
                       return (
                         <Radio
-                          key={mode}
-                          checked={values?.project_mode === mode}
+                          key={mode?._id}
+                          checked={values?.complexity_id === mode?._id}
                           variant="outline"
                           onChange={(e) => {
-                            setFieldValue("project_mode", e.target?.name);
+                            setFieldValue("complexity_id", e.target?.name);
                           }}
-                          name={mode}
-                          label={mode}
+                          name={mode?._id}
+                          label={mode?.complexity_text}
                         />
                       );
                     })}
                   </div>
+                </div>
+                <JobBudgetContainer />
+             
+                <div className="flex gap-2">
+                  <Button>Post Now</Button>
+                  <Button variant="outline">Save as Draft</Button>
                 </div>
               </Form>
             );

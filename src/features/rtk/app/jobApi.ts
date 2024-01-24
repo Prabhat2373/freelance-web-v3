@@ -1,6 +1,7 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "../baseQuery";
+import { ResponseTransformer } from "@/helper/ResponseTransformer";
 
 // Define a service using a base URL and expected endpoints
 export const jobApi = createApi({
@@ -24,6 +25,22 @@ export const jobApi = createApi({
         url: `/skills`,
       }),
     }),
+    getJobDurations: builder.query({
+      query: () => ({
+        url: `/exected-durations`,
+      }),
+    }),
+    getComplexities: builder.query({
+      query: () => ({
+        url: `/complexities`,
+      }),
+    }),
+    getPaymentTypes: builder.query({
+      query: () => ({
+        url: `/payment-types`,
+      }),
+      transformResponse: ResponseTransformer,
+    }),
   }),
 });
 
@@ -32,4 +49,7 @@ export const {
   useCreateJobMutation,
   useLazyGetSkillsQuery,
   useGetSkillsQuery,
+  useGetJobDurationsQuery,
+  useGetComplexitiesQuery,
+  useGetPaymentTypesQuery,
 } = jobApi;

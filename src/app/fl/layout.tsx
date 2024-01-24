@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { FormContextProvider } from "@/contexts/FormContext";
 import { Providers } from "@/features/rtk/provider";
 import FreelancerLayout from "@/layout/freelancer/FreelancerLayout";
+import LayoutProvider from "@/containers/app/LayoutProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,9 @@ export default function RootLayout({
       <FormContextProvider>
         <html lang="en">
           <body className={inter.className}>
-            <FreelancerLayout>{children}</FreelancerLayout>
+            <LayoutProvider>
+              <FreelancerLayout>{children}</FreelancerLayout>
+            </LayoutProvider>
           </body>
         </html>
       </FormContextProvider>

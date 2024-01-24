@@ -14,6 +14,7 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { useColorScheme } from "@mantine/hooks";
+import { USER_TYPES } from "@/constants/app.constant";
 
 const Navbar = () => {
   // const =useColorScheme()
@@ -22,13 +23,17 @@ const Navbar = () => {
     getInitialValueInEffect: true,
   });
 
-  const { user, isLoggedIn } = useSelector((state: RootState) => state.user);
+  const { user, isLoggedIn, role } = useSelector(
+    (state: RootState) => state.user
+  );
+  console.log("role", role);
+
   const [isOpen, setIsOpen] = useState(false);
   return (
     <HydrationWrapper>
       <nav className="bg-white flex justify-between px-16 py-4 items-center ">
         <div>
-          <Link href={"/fl"}>
+          <Link href={user?.role === USER_TYPES.CLIENT ? "/cl" : "/fl"}>
             <h1 className="text-[#FF4C4A] text-3xl font-bold">Logo</h1>
           </Link>
         </div>

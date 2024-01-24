@@ -64,7 +64,7 @@ const CreateJobForm = () => {
                   />
                 </div>
                 <div>
-                  <SelectSkills />
+                  <SelectSkills name={"required_skills"} />
                 </div>
                 <div>
                   <Text>Estimate your timeline here</Text>

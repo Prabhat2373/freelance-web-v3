@@ -3,6 +3,7 @@
 import Footer from "@/components/layout/Footer";
 import { ToastContainer } from "react-toastify";
 import ClientNavbar from "./partials/ClientNavbar";
+import { useColorScheme } from "@mantine/hooks";
 
 const ClientLayout = ({ children }) => {
   // const router = useRouter();
@@ -13,6 +14,9 @@ const ClientLayout = ({ children }) => {
   //     return
   //   }
   // }, [])
+  const theme = useColorScheme();
+  console.log("theme", theme);
+
   return (
     <div>
       <ClientNavbar />

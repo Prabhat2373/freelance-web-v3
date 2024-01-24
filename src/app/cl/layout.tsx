@@ -5,6 +5,8 @@ import { FormContextProvider } from "@/contexts/FormContext";
 import { Providers } from "@/features/rtk/provider";
 import ClientLayout from "@/layout/client/ClientLayout";
 import "@mantine/core/styles.css";
+import { MantineProvider } from "@mantine/core";
+import LayoutProvider from "@/containers/app/LayoutProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +25,9 @@ export default function RootLayout({
       <FormContextProvider>
         <html lang="en">
           <body className={inter.className}>
-            <ClientLayout>{children}</ClientLayout>
+            <LayoutProvider>
+              <ClientLayout>{children}</ClientLayout>
+            </LayoutProvider>
           </body>
         </html>
       </FormContextProvider>

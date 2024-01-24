@@ -2,12 +2,19 @@
 import React from "react";
 import Select from "../Select";
 import { useGetSkillsQuery } from "@/features/rtk/app/jobApi";
+import { useFormikContext } from "formik";
 
-const SelectSkills = () => {
+const SelectSkills = ({ name }) => {
   const { data: skillsData } = useGetSkillsQuery("");
+  const { setFieldValue, values } = useFormikContext();
   console.log("skillsData", skillsData);
 
-  const skillsOptions = skillsData?.data?.map((skill) => skill?.skill_name);
+  const skillsOptions = skillsData?.data?.map((skill) => {
+    return {
+      label: skill?.skill_name,
+      value: skill?._id,
+    };
+  });
   console.log("skillsOptions", skillsOptions);
 
   return (
@@ -18,6 +25,7 @@ const SelectSkills = () => {
         placeholder={"Select Skills"}
         onChange={(val) => {
           console.log("selectVal", val);
+          setFieldValue(name, val);
         }}
       />
     </>

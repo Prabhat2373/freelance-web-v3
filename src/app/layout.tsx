@@ -12,6 +12,7 @@ import GuestLayout from "@/layout/GuestLayout";
 import Layout from "@/layout/Layout";
 import Head from "next/head";
 import ClientLayout from "@/layout/client/ClientLayout";
+import LayoutProvider from "@/containers/app/LayoutProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,12 +34,9 @@ export default function RootLayout({
             <ColorSchemeScript />
           </Head>
           <body className={inter.className}>
-            <MantineProvider>
-              {/* <Layout>{children}</Layout> */}
+            <LayoutProvider>
               <GuestLayout>{children}</GuestLayout>
-              {/* {children} */}
-              {/* <ClientLayout>{children}</ClientLayout> */}
-            </MantineProvider>
+            </LayoutProvider>
           </body>
         </html>
       </FormContextProvider>

@@ -12,7 +12,7 @@ const ExperienceLevelContainer = () => {
     <div>
       <Text>Choose Experience Level</Text>
 
-      <div className="flex gap-2">
+      <div className="flex gap-2 py-2">
         {experienceLevels?.map((experience) => {
           return (
             <Radio

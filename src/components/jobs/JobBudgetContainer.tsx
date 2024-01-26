@@ -13,7 +13,7 @@ const JobBudgetContainer = () => {
   return (
     <div>
       <Text>Tell us about your budget?</Text>
-      <div className="flex gap-2">
+      <div className="flex gap-2 py-3">
         {paymentTypes?.map((payment_type) => {
           return (
             <Radio
@@ -21,6 +21,7 @@ const JobBudgetContainer = () => {
               checked={values?.payment_mode === payment_type?.type}
               variant="outline"
               onChange={(e) => {
+                setFieldValue("payment_type_id", payment_type?._id);
                 setFieldValue("payment_mode", e.target?.name);
                 setPaymentType(e.target?.name);
               }}
@@ -30,7 +31,7 @@ const JobBudgetContainer = () => {
           );
         })}
       </div>
-      <div>
+      <div className="py-2">
         <Input.Wrapper className="flex gap-2 w-1/2 items-center">
           <Money />
           <Input

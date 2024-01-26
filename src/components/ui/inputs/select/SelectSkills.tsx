@@ -20,6 +20,7 @@ const SelectSkills = ({ name }) => {
   return (
     <>
       <Select
+        isMulti
         options={skillsOptions}
         label={"Skills"}
         placeholder={"Select Skills"}

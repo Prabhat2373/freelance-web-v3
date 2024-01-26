@@ -26,5 +26,5 @@ export const capitalizeFirst = (str: string) => {
 export const isSuccess = (res) => {
   if (!res) return;
 
-  return res?.data?.success;
+  return res?.data?.success || res?.data?.status?.toLowerCase() === "success";
 };

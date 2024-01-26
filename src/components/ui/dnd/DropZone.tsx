@@ -4,18 +4,18 @@ import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 import { IconCloudUpload, IconX, IconDownload } from "@tabler/icons-react";
 import classes from "../../../styles/dropzone.module.css";
 
-export function DropZoneUI() {
+export function DropZoneUI({ title, description }) {
   const theme = useMantineTheme();
   const openRef = useRef<() => void>(null);
 
   return (
-    <div className={classes.wrapper}>
+    <div className={"relative mb-30 rounded-md"}>
       <Dropzone
         openRef={openRef}
         onDrop={(event) => {
           console.log("dropped", event);
         }}
-        className={classes.dropzone}
+        className={"border rounded-md  border-solid border-primary pb-12"}
         radius="md"
         accept={[MIME_TYPES.pdf, MIME_TYPES.png, MIME_TYPES.jpeg]}
         maxSize={30 * 1024 ** 2}
@@ -47,23 +47,29 @@ export function DropZoneUI() {
           <Text ta="center" fw={700} fz="lg" mt="xl">
             <Dropzone.Accept>Drop files here</Dropzone.Accept>
             <Dropzone.Reject>Pdf file less than 30mb</Dropzone.Reject>
-            <Dropzone.Idle>Upload resume</Dropzone.Idle>
+            <Dropzone.Idle>{title}</Dropzone.Idle>
           </Text>
           <Text ta="center" fz="sm" mt="xs" c="dimmed">
-            Drag&apos;n&apos;drop files here to upload. We can accept only{" "}
-            <i>.pdf</i> files that are less than 30mb in size.
+            {/* Drag&apos;n&apos;drop files here to upload. We can accept only{" "}
+            <i>.pdf</i> files that are less than 30mb in size. */}
+            {description}
           </Text>
         </div>
       </Dropzone>
 
-      <Button
-        className={classes.control}
-        size="md"
-        radius="xl"
-        onClick={() => openRef.current?.()}
-      >
-        Select files
-      </Button>
+      <div className="w-full flex justify-center -mt-5">
+        <Button
+          // className={
+          //   "absolute w-64 left-1/2 transform -translate-x-1/2 bottom-[-20px]"
+          // }
+
+          size="md"
+          radius="xl"
+          onClick={() => openRef.current?.()}
+        >
+          Select files
+        </Button>
+      </div>
     </div>
   );
 }

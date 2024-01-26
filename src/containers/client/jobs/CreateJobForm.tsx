@@ -1,4 +1,6 @@
-import Select from "@/components/ui/inputs/Select";
+import AttachmentDropzoneContainer from "@/components/jobs/AttachmentDropzoneContainer";
+import ExperienceLevelContainer from "@/components/jobs/ExperienceLevelContainer";
+import JobBudgetContainer from "@/components/jobs/JobBudgetContainer";
 import SelectSkills from "@/components/ui/inputs/select/SelectSkills";
 import {
   useCreateJobMutation,
@@ -8,19 +10,16 @@ import {
 } from "@/features/rtk/app/jobApi";
 import { isSuccess } from "@/utils/utils";
 import {
-  Box,
   Button,
   Container,
   Input,
   Paper,
   Radio,
+  Text,
   Textarea,
 } from "@mantine/core";
 import { Form, Formik } from "formik";
-import React from "react";
 import { toast } from "react-toastify";
-import { Text } from "@mantine/core";
-import JobBudgetContainer from "@/components/jobs/JobBudgetContainer";
 
 const CreateJobForm = () => {
   const [createJob, { isLoading: isJobCreating }] = useCreateJobMutation();
@@ -54,9 +53,6 @@ const CreateJobForm = () => {
   const projectEstimateDurations = projectDurations?.data;
   const complexities = complexitiesData?.data;
 
-  console.log("projectEstimateDurations", projectEstimateDurations);
-
-  const projectPaymentModes = ["fixed_price", "hourly"];
   return (
     <Container>
       <Paper shadow="sm" p="xl">
@@ -131,9 +127,11 @@ const CreateJobForm = () => {
                   </div>
                 </div>
                 <JobBudgetContainer />
-             
+                <ExperienceLevelContainer />
+                <AttachmentDropzoneContainer />
+
                 <div className="flex gap-2">
-                  <Button>Post Now</Button>
+                  <Button type="submit">Post Now</Button>
                   <Button variant="outline">Save as Draft</Button>
                 </div>
               </Form>

@@ -41,6 +41,12 @@ export const jobApi = createApi({
       }),
       transformResponse: ResponseTransformer,
     }),
+    getExperienceLevels: builder.query({
+      query: () => ({
+        url: `experience-levels`,
+      }),
+      transformResponse: ResponseTransformer,
+    }),
   }),
 });
 
@@ -52,4 +58,5 @@ export const {
   useGetJobDurationsQuery,
   useGetComplexitiesQuery,
   useGetPaymentTypesQuery,
+  useGetExperienceLevelsQuery,
 } = jobApi;

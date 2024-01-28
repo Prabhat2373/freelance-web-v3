@@ -1,6 +1,6 @@
 import { useGetPaymentTypesQuery } from "@/features/rtk/app/jobApi";
 import { Input, Radio, Text } from "@mantine/core";
-import { useFormikContext } from "formik";
+import { Field, useFormikContext } from "formik";
 import { useState } from "react";
 import Money from "../ui/payment/Money";
 
@@ -34,7 +34,8 @@ const JobBudgetContainer = () => {
       <div className="py-2">
         <Input.Wrapper className="flex gap-2 w-1/2 items-center">
           <Money />
-          <Input
+          <Field
+            as={Input}
             name="payment_amount"
             placeholder="Enter Amount"
             type="number"

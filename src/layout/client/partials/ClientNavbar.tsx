@@ -41,6 +41,7 @@ const ClientNavbar = () => {
           <div className="flex gap-10">
             {/* <li className="text-base font-medium"> */}
             <Link href={"/cl/jobs"}>Explore Freelancers</Link>
+            <Link href={"/cl/my-jobs"}>My Jobs</Link>
             {/* </li> */}
             {/* <li className="text-base font-medium"> */}
             <Link href="/cl/jobs/create">Post Job</Link>

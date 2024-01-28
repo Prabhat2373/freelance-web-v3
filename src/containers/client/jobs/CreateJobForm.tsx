@@ -111,7 +111,12 @@ const CreateJobForm = () => {
                   <AttachmentDropzoneContainer />
                 </div>
                 <div className="flex gap-2">
-                  <Button type="submit">Post Now</Button>
+                  <Button
+                    type="submit"
+                    onClick={() => setFieldValue("draft", false)}
+                  >
+                    Post Now
+                  </Button>
                   <Button
                     variant="outline"
                     type="submit"

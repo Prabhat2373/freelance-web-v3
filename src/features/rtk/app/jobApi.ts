@@ -47,6 +47,13 @@ export const jobApi = createApi({
       }),
       transformResponse: ResponseTransformer,
     }),
+    getClientJobs: builder.query({
+      query: (params) => ({
+        url: `/client/jobs`,
+        params: params,
+      }),
+      // transformResponse: ResponseTransformer,
+    }),
   }),
 });
 
@@ -59,4 +66,6 @@ export const {
   useGetComplexitiesQuery,
   useGetPaymentTypesQuery,
   useGetExperienceLevelsQuery,
+  useLazyGetClientJobsQuery,
+  useGetClientJobsQuery,
 } = jobApi;

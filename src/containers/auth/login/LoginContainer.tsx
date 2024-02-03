@@ -104,7 +104,7 @@ const LoginContainer = () => {
                     component={"div"}
                     className="text-red-500"
                   />
-                  {/* <Field
+                  <Field
                     as={InputField}
                     label="Password"
                     name="password"
@@ -117,16 +117,16 @@ const LoginContainer = () => {
                     name="password"
                     component={"div"}
                     className="text-red-500"
-                  /> */}
-                  <div>
+                  />
+                  {/* <div>
                     <PasswordStrengthInput name={"password"} />
-                  </div>
+                  </div> */}
                   <div>
                     <Button type="submit">Login</Button>
                   </div>
                   <div>
                     Don’t have account?{" "}
-                    <Link href={"/register"} className="text-orange">
+                    <Link href={"/auth/register"} className="text-orange">
                       Sign up
                     </Link>
                   </div>

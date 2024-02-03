@@ -7,4 +7,8 @@ export enum AUTH {
   TOKEN = "token",
 }
 
-export const globalRoutes: string[] = ["/auth/login", "/auth/register"];
+export const globalRoutes: string[] = [
+  "/auth/login",
+  "/auth/register",
+  "/onboarding",
+];

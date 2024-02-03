@@ -1,26 +1,25 @@
-import AddExperienceForm from "@/components/onboarding/form/AddExperienceForm"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
-import { useOnboardingForm } from "@/contexts/FormContext"
-import { addExperienceValidation } from "@/validators/onboarding/onboardingValidator"
-import { Form, Formik } from "formik"
-import { useState, useMemo } from "react"
+"use client";
+import AddExperienceForm from "@/components/onboarding/form/AddExperienceForm";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { useOnboardingForm } from "@/contexts/FormContext";
+import { addExperienceValidation } from "@/validators/onboarding/onboardingValidator";
+import { Form, Formik } from "formik";
+import { useState } from "react";
 
-import Button from "../../../components/buttons/Button"
-import StepLayout from "../../../layout/freelancer/StepLayout"
 import {
   useLazyDeleteExperienceQuery,
   useUpdateAccountMutation,
-} from "@/features/rtk/app/userApi"
-import { statusHandler } from "@/utils/utils"
-import { Case, Switch } from "@/components/utils/Conditional"
+} from "@/features/rtk/app/userApi";
+import Button from "../../../components/buttons/Button";
+import StepLayout from "../../../layout/freelancer/StepLayout";
 
 const AddExperience = () => {
   const {
     formData,
 
     handleFormSubmit,
-  } = useOnboardingForm()
+  } = useOnboardingForm();
   const [experiences, setExperiences] = useState(
     formData?.employment_history?.length
       ? formData?.employment_history?.map((history) => ({
@@ -45,34 +44,34 @@ const AddExperience = () => {
             skills_used: [],
           },
         ]
-  )
-  const [updateAccont] = useUpdateAccountMutation()
+  );
+  const [updateAccont] = useUpdateAccountMutation();
   const [deleteExperience, { isLoading: isDeleteExperienceLoading }] =
-    useLazyDeleteExperienceQuery()
+    useLazyDeleteExperienceQuery();
 
-  console.log("formData", formData)
+  console.log("formData", formData);
 
   const initialValues = {
     experience: experiences,
-  }
+  };
 
   const handleAddClick = () => {
     // setShowForm(true)
-    setExperiences([...experiences, initialValues.experience])
-  }
+    setExperiences([...experiences, initialValues.experience]);
+  };
 
   const handleDeleteForm = async (deletedIndex: number) => {
     const updatedExperience = experiences.filter(
       (_, idx) => idx !== deletedIndex
-    )
-    setExperiences(updatedExperience)
-  }
+    );
+    setExperiences(updatedExperience);
+  };
 
   const handleNoExperience = () => {
-    setExperiences([])
-  }
+    setExperiences([]);
+  };
 
-  console.log("initialValues", initialValues)
+  console.log("initialValues", initialValues);
 
   return (
     <StepLayout
@@ -86,13 +85,13 @@ const AddExperience = () => {
         validationSchema={addExperienceValidation}
         enableReinitialize
         onSubmit={(data) => {
-          const payload = { employment_history: [...data.experience] }
-          handleFormSubmit(payload)
+          const payload = { employment_history: [...data.experience] };
+          handleFormSubmit(payload);
         }}
       >
         {({ values, errors }) => {
-          console.log("values", values)
-          console.log("errors", errors)
+          console.log("values", values);
+          console.log("errors", errors);
 
           return (
             <Form>
@@ -122,9 +121,9 @@ const AddExperience = () => {
                     id="experience"
                     onCheckedChange={(checked) => {
                       if (checked) {
-                        handleNoExperience()
+                        handleNoExperience();
                       } else {
-                        handleAddClick()
+                        handleAddClick();
                       }
                     }}
                     // onClick={handleNoExperience}
@@ -144,12 +143,12 @@ const AddExperience = () => {
                 </div>
               </>
             </Form>
-          )
+          );
         }}
       </Formik>
       {/* </Container> */}
     </StepLayout>
-  )
-}
+  );
+};
 
-export default AddExperience
+export default AddExperience;

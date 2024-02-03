@@ -23,8 +23,9 @@ export const rtkQueryErrorLogger: Middleware =
       toast.error(
         action?.payload?.data?.error ?? action?.payload?.data?.message
       );
-      if (!globalRoutes?.includes(window?.location?.pathname))
-        window.location.href = "/auth/login";
+      if (!globalRoutes?.includes(window?.location?.pathname)) {
+        // window.location.href = "/auth/login";
+      }
       console.log("errorr");
     }
 

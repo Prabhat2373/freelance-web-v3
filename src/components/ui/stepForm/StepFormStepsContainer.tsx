@@ -1,9 +1,9 @@
 "use client";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 
-import React, { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+// import { useRouter } from "next/router";
+
+import React from "react";
 
 const stepsData = [
   {
@@ -75,7 +75,7 @@ const StepFormStepsContainer = ({
             <div
               data-tippy-content="Add your text"
               className="bg-gray-50 bg-opacity-35 rounded-full items-center p-3 flex"
-              onClick={() => handleStepClick(index,step)}
+              onClick={() => handleStepClick(index, step)}
             >
               <img src={step?.icon} loading="lazy" alt="" className="w-7" />
             </div>

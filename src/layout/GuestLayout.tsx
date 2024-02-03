@@ -8,8 +8,14 @@ import dynamic from "next/dynamic";
 import Footer from "../components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import PageTransitionLayout from "@/containers/app/PageTransition";
+import { useColorScheme } from "@mantine/hooks";
+import { useMantineColorScheme } from "@mantine/core";
 
 const GuestLayout = ({ children }) => {
+  const { setColorScheme } = useMantineColorScheme();
+  setColorScheme({
+    black: "red",
+  });
   return (
     <div className="flex flex-col ">
       <Navbar />

@@ -3,8 +3,10 @@ import { useOnboardingForm } from "@/contexts/FormContext";
 import React, { useEffect } from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import StepFormStepsContainer from "../ui/stepForm/StepFormStepsContainer";
+import { useRouter } from "next/navigation";
 
 function Stepper() {
+  const router = useRouter();
   const { activeStepIndex, setActiveStepIndex, handleBack, onboardingLinks } =
     useOnboardingForm();
   const totalSteps = 8;

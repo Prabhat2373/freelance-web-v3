@@ -13,12 +13,12 @@ const StepLayout = ({ title, subTitle, children }) => {
       <Container>
         <div className="w-[50%]">
           <Stepper />
-          <div>
+          {/* <div>
             <h1 className="text-gray-900 text-xl font-medium font-montserrat">
               {title}
             </h1>
             <p>{subTitle}</p>
-          </div>
+          </div> */}
           {children}
         </div>
       </Container>

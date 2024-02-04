@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import StepFormStepsContainer from "../ui/stepForm/StepFormStepsContainer";
 import { useRouter } from "next/navigation";
+import IconHeading from "../icons/IconHeading";
 
 function Stepper() {
   const router = useRouter();

@@ -24,7 +24,7 @@ const StepLayout = ({ title, subTitle, children }) => {
       </Container>
       {/* <div className="flex justify-center items-center py-12">
         <Button
-          width="60%"
+        width="60%"
           variant="filled"
           className="flex px-24"
           type="submit"

@@ -1,5 +1,6 @@
 "use client";
 
+import { Tooltip } from "@mantine/core";
 import { usePathname, useRouter } from "next/navigation";
 // import { useRouter } from "next/router";
 
@@ -72,22 +73,28 @@ const StepFormStepsContainer = ({
           {/* ACTIVE TAB  */}
 
           {activeStepIndex !== index ? (
-            <div
-              data-tippy-content="Add your text"
-              className="bg-gray-50 bg-opacity-35 rounded-full items-center p-3 flex"
-              onClick={() => handleStepClick(index, step)}
-            >
-              <img src={step?.icon} loading="lazy" alt="" className="w-7" />
-            </div>
+            <>
+              <Tooltip label={step?.title} withArrow>
+                <div
+                  data-tippy-content="Add your text"
+                  className="bg-gray-50  rounded-full items-center p-3 flex cursor-pointer"
+                  onClick={() => handleStepClick(index, step)}
+                >
+                  {/* <img src={step?.icon} loading="lazy" alt="" className="w-7" /> */}
+                  {step?.icon}
+                </div>
+              </Tooltip>
+            </>
           ) : (
             <div className="rounded-full items-center flex">
               {/* CURRENT SLIDE TAB  */}
               <div className="w-55 h-55 min-w-55 min-h-55 bg-purple-600 rounded-full justify-center items-center flex shadow-md p-4">
-                <img src={step?.icon} loading="lazy" alt="" />
+                {/* <img src={step?.icon} loading="lazy" alt="" /> */}
+                {step?.icon}
               </div>
               <div className="ml-4">
                 <div className="text-purple-600 font-sans font-Circularstd text-sm font-medium">
-                  Step {index}/{10}
+                  Step {index + 1}/{10}
                 </div>
                 <div className="text-blue-900 font-sans font-Circularstd text-base font-bold">
                   {step?.title}
@@ -96,7 +103,7 @@ const StepFormStepsContainer = ({
             </div>
           )}
           {index !== onboardingLinks?.length - 1 && (
-            <div className="w-1  bg-opacity-48 bg-gray ml-2 mr-2" />
+            <div className="w-0.5  bg-opacity-48 bg-gray ml-2 mr-2 h-[50px]" />
           )}
         </React.Fragment>
       ))}

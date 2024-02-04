@@ -7,6 +7,7 @@ import { useUpdateAccountMutation } from "@/features/rtk/app/userApi";
 import StepLayout from "@/layout/freelancer/StepLayout";
 import { statusHandler } from "@/utils/utils";
 import { titleStepValidation } from "@/validators/onboarding/onboardingValidator";
+import { Input } from "@mantine/core";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 // import InputField from "../../components/inputs/InputField";
 
@@ -31,15 +32,23 @@ const FreelancerHeadingFormContainer = () => {
 
           return (
             <Form>
-              <Field
-                as={InputField}
+              {/* <Field
+                as={Input}
                 placeholder="Give title"
                 // onChange={handleChange}
                 name="title"
                 id="title"
                 value={values.title}
                 // error={errors.title}
-              />
+              /> */}
+              <Input.Wrapper label="Title">
+                <Input
+                  onChange={handleChange}
+                  name="title"
+                  value={values?.title}
+                  placeholder="Ex. Figma Developer, Frontend Developer"
+                />
+              </Input.Wrapper>
               <ErrorMessage
                 className="text-red-500"
                 component={"div"}

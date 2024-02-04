@@ -12,10 +12,8 @@ import { useColorScheme } from "@mantine/hooks";
 import { useMantineColorScheme } from "@mantine/core";
 
 const GuestLayout = ({ children }) => {
-  const { setColorScheme } = useMantineColorScheme();
-  setColorScheme({
-    black: "red",
-  });
+  // const { setColorScheme } = useMantineColorScheme();
+
   return (
     <div className="flex flex-col ">
       <Navbar />

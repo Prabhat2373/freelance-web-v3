@@ -49,8 +49,9 @@ function RegisterContainer() {
 
       if (data?.role === USER_TYPES.FREELANCER) {
         router.push("/onboarding/title");
+      } else {
+        router.push("/cl");
       }
-      router.push("/cl");
     }
     console.log("response", response);
   };

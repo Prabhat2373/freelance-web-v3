@@ -1,4 +1,5 @@
 "use client";
+import IconHeading from "@/components/icons/IconHeading";
 import {
   useLazyGetAccountQuery,
   useUpdateAccountMutation,
@@ -6,6 +7,16 @@ import {
 import { setStoreUser } from "@/features/slices/userReducer";
 import { RootState } from "@/features/store/store";
 import { statusHandler } from "@/utils/utils";
+import {
+  IconAddressBook,
+  IconCertificate2,
+  IconFileDescription,
+  IconLanguage,
+  IconListCheck,
+  IconListDetails,
+  IconReceipt2,
+  IconSchool,
+} from "@tabler/icons-react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -88,70 +99,74 @@ export const FormContextProvider = ({ children }) => {
   const pathname = usePathname();
   const onboardingLinks = [
     {
-      title: "First, add a title to tell the world what you do.",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod.",
+      title: "Add Title",
+      description: "Add Your Designation or Heading.",
       href: "/onboarding/title",
       check: "title",
       required: true,
       isSkippable: false,
-      icon: "https://assets-global.website-files.com/6085444bc1ab19c6fb0bd04f/6086ae038a8e6d140d683b9e_Slide%20Icon%2001.svg",
+      icon: <IconListDetails />,
     },
     {
-      title: "First, add a title to tell the world what you do.",
+      title: "Add Experience ",
+      description: "Tell us about your experience",
       href: "/onboarding/experience",
       check: "experience",
       required: true,
       isSkippable: false,
-      icon: "https://assets-global.website-files.com/6085444bc1ab19c6fb0bd04f/6086ae038a8e6d140d683b9e_Slide%20Icon%2001.svg",
+      icon: <IconCertificate2 />,
     },
     {
-      title: "First, add a title to tell the world what you do.",
+      title: "Add Education",
       href: "/onboarding/education",
-      check: "title",
+      description: "Tell us about your Education Background",
+
+      check: "education",
       required: true,
       isSkippable: false,
-      icon: "https://assets-global.website-files.com/6085444bc1ab19c6fb0bd04f/6086ae038a8e6d140d683b9e_Slide%20Icon%2001.svg",
+      icon: <IconSchool />,
     },
     {
-      title: "First, add a title to tell the world what you do.",
+      title: "Pick Languages",
       href: "/onboarding/languages",
-      check: "title",
+      description: "Select Speaking Lanuage",
+
+      check: "languages",
       required: true,
       isSkippable: false,
-      icon: "https://assets-global.website-files.com/6085444bc1ab19c6fb0bd04f/6086ae038a8e6d140d683b9e_Slide%20Icon%2001.svg",
+      icon: <IconLanguage />,
     },
     {
-      title: "First, add a title to tell the world what you do.",
+      title: "Obtain Skills",
       href: "/onboarding/skills",
-      check: "title",
+      check: "skills",
       required: true,
       isSkippable: false,
-      icon: "https://assets-global.website-files.com/6085444bc1ab19c6fb0bd04f/6086ae038a8e6d140d683b9e_Slide%20Icon%2001.svg",
+      icon: <IconListCheck />,
     },
     {
-      title: "First, add a title to tell the world what you do.",
+      title: "Write a Bio",
       href: "/onboarding/description",
-      check: "title",
+      check: "profile-bio",
       required: true,
       isSkippable: false,
-      icon: "https://assets-global.website-files.com/6085444bc1ab19c6fb0bd04f/6086ae038a8e6d140d683b9e_Slide%20Icon%2001.svg",
+      icon: <IconFileDescription />,
     },
     {
-      title: "First, add a title to tell the world what you do.",
+      title: "Rate",
       href: "/onboarding/rate",
-      check: "title",
+      check: "freelancing-rates",
       required: true,
       isSkippable: false,
-      icon: "https://assets-global.website-files.com/6085444bc1ab19c6fb0bd04f/6086ae038a8e6d140d683b9e_Slide%20Icon%2001.svg",
+      icon: <IconReceipt2 />,
     },
     {
-      title: "First, add a title to tell the world what you do.",
+      title: "Contact Details",
       href: "/onboarding/contact-info",
-      check: "title",
+      check: "contact-details",
       required: true,
       isSkippable: false,
-      icon: "https://assets-global.website-files.com/6085444bc1ab19c6fb0bd04f/6086ae038a8e6d140d683b9e_Slide%20Icon%2001.svg",
+      icon: <IconAddressBook />,
     },
   ];
   console.log("pathname", pathname);

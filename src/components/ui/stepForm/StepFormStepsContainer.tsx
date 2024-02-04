@@ -77,7 +77,7 @@ const StepFormStepsContainer = ({
               <Tooltip label={step?.title} withArrow>
                 <div
                   data-tippy-content="Add your text"
-                  className="bg-gray-50  rounded-full items-center p-3 flex cursor-pointer"
+                  className="bg-gray-50   rounded-full items-center p-3 flex cursor-pointer"
                   onClick={() => handleStepClick(index, step)}
                 >
                   {/* <img src={step?.icon} loading="lazy" alt="" className="w-7" /> */}
@@ -88,7 +88,7 @@ const StepFormStepsContainer = ({
           ) : (
             <div className="rounded-full items-center flex">
               {/* CURRENT SLIDE TAB  */}
-              <div className="w-55 h-55 min-w-55 min-h-55 bg-purple-600 rounded-full justify-center items-center flex shadow-md p-4">
+              <div className="w-55 h-55 text-white min-w-55 min-h-55 bg-purple-600 rounded-full justify-center items-center flex shadow-md p-4">
                 {/* <img src={step?.icon} loading="lazy" alt="" /> */}
                 {step?.icon}
               </div>

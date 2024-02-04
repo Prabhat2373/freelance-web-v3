@@ -5,6 +5,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import StepFormStepsContainer from "../ui/stepForm/StepFormStepsContainer";
 import { useRouter } from "next/navigation";
 import IconHeading from "../icons/IconHeading";
+import { Container } from "@mantine/core";
 
 function Stepper() {
   const router = useRouter();
@@ -59,14 +60,16 @@ function Stepper() {
     //     </div>
     //   </div>
     // </div>
-    <>
+    <div>
+      {/* <Container> */}
       <StepFormStepsContainer
         activeStepIndex={activeStepIndex}
         setActiveStepIndex={setActiveStepIndex}
         withHref
         onboardingLinks={onboardingLinks}
       />
-    </>
+      {/* </Container> */}
+    </div>
   );
 }
 

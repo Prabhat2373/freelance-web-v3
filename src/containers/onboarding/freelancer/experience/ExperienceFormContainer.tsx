@@ -12,31 +12,6 @@ const ExperienceFormContainer = () => {
 
     handleFormSubmit,
   } = useOnboardingForm();
-  // const [experiences, setExperiences] = useState(
-  //   formData?.employment_history?.length > 1
-  //     ? formData?.employment_history?.map((history) => ({
-  //         company_name: history?.company_name ?? "",
-  //         position: history?.position ?? "",
-  //         employment_type: history?.employment_type ?? "",
-  //         start_date: history?.start_date ?? undefined,
-  //         end_date: history?.end_date ?? undefined,
-  //         currently_working: history?.currently_working ?? false,
-  //         description: history?.description ?? "",
-  //         skills_used: history?.skills_used ?? [],
-  //       }))
-  //     : [
-  //         {
-  //           company_name: "",
-  //           position: "",
-  //           employment_type: "",
-  //           start_date: undefined,
-  //           end_date: undefined,
-  //           currently_working: false,
-  //           description: "",
-  //           skills_used: [],
-  //         },
-  //       ]
-  // );
 
   console.log("formData", formData);
 

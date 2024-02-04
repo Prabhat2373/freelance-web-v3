@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import GuestLayout from "../GuestLayout";
 import { Container } from "@mantine/core";
+import StepsButtonLayout from "@/components/onboarding/steps/StepsButtonLayout";
 // import Container from "@/components/ui/Container";
 
 const StepLayout = ({ title, subTitle, children }) => {
@@ -21,6 +22,7 @@ const StepLayout = ({ title, subTitle, children }) => {
             <p>{subTitle}</p>
           </div> */}
           <div className=" ">{children}</div>
+          <StepsButtonLayout />
         </div>
       </Container>
       {/* <div className="flex justify-center items-center py-12">

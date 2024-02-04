@@ -1,27 +1,43 @@
 "use client";
 
-import AddEducationForm from "@/components/onboarding/form/AddEducationForm"; // Import the modified AddEducationForm
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { useOnboardingForm } from "@/contexts/FormContext";
-import StepLayout from "@/layout/freelancer/StepLayout";
 import { addEducationValidation } from "@/validators/onboarding/onboardingValidator"; // Import the relevant validation schema
-import { Button } from "@mantine/core";
-import { Form, Formik } from "formik";
+import { Formik } from "formik";
 import { useState } from "react";
+import EducationForm from "./EducationForm";
 
 const EducationFormContainer = () => {
   const { formData, handleFormSubmit } = useOnboardingForm();
-  const [educations, setEducations] = useState(
-    formData?.education_history?.length
-      ? formData?.education_history?.map((history) => ({
-          institution: history?.institution ?? "",
-          degree: history?.degree ?? "",
-          fieldOfStudy: history?.fieldOfStudy ?? "",
-          startYear: history?.startYear ?? undefined,
-          endYear: history?.endYear ?? undefined,
-          description: history?.description ?? "",
-        }))
+  // const [educations, setEducations] = useState(
+  //   formData?.education_history?.length
+  //     ? formData?.education_history?.map((history) => ({
+  //         institution: history?.institution ?? "",
+  //         degree: history?.degree ?? "",
+  //         fieldOfStudy: history?.fieldOfStudy ?? "",
+  //         startYear: history?.startYear ?? undefined,
+  //         endYear: history?.endYear ?? undefined,
+  //         description: history?.description ?? "",
+  //       }))
+  //     : [
+  //         {
+  //           institution: "",
+  //           degree: "",
+  //           fieldOfStudy: "",
+  //           startYear: undefined,
+  //           endYear: undefined,
+  //           description: "",
+  //         },
+  //       ]
+  // );
+
+  const initialValues = {
+    education: formData?.education_history?.length
+      ? formData?.education_history?.map((education) => {
+          return {
+            ...education,
+            _id: undefined,
+          };
+        })
       : [
           {
             institution: "",
@@ -31,27 +47,23 @@ const EducationFormContainer = () => {
             endYear: undefined,
             description: "",
           },
-        ]
-  );
-
-  const initialValues = {
-    education: educations,
+        ],
   };
 
-  const handleAddClick = () => {
-    setEducations([...educations, initialValues.education]);
-  };
+  // const handleAddClick = () => {
+  //   setEducations([...educations, initialValues.education]);
+  // };
 
-  const handleDeleteForm = async (deletedIndex: number) => {
-    const updatedEducation = educations.filter(
-      (_, idx) => idx !== deletedIndex
-    );
-    setEducations(updatedEducation);
-  };
+  // const handleDeleteForm = async (deletedIndex: number) => {
+  //   const updatedEducation = educations.filter(
+  //     (_, idx) => idx !== deletedIndex
+  //   );
+  //   setEducations(updatedEducation);
+  // };
 
-  const handleNoEducation = () => {
-    setEducations([]);
-  };
+  // const handleNoEducation = () => {
+  //   setEducations([]);
+  // };
 
   return (
     <Formik
@@ -67,54 +79,7 @@ const EducationFormContainer = () => {
         console.log("values", values);
         console.log("errors", errors);
 
-        return (
-          <Form>
-            <>
-              {educations.map((education, index) => (
-                <AddEducationForm
-                  key={index}
-                  education={education}
-                  handleDeleteForm={handleDeleteForm}
-                  index={index}
-                />
-              ))}
-
-              <div className="flex flex-col">
-                <Button
-                  variant="outlined"
-                  onClick={handleAddClick}
-                  className="flex px-24"
-                  type="button"
-                >
-                  + Add Education
-                </Button>
-              </div>
-              <div>
-                <Checkbox
-                  id="education"
-                  onCheckedChange={(checked) => {
-                    if (checked) {
-                      handleNoEducation();
-                    } else {
-                      handleAddClick();
-                    }
-                  }}
-                />
-                <Label htmlFor="education">No Education</Label>
-              </div>
-              <div className="flex justify-center items-center py-12">
-                <Button
-                  width="60%"
-                  variant="filled"
-                  className="flex px-24"
-                  type="submit"
-                >
-                  Next
-                </Button>
-              </div>
-            </>
-          </Form>
-        );
+        return <EducationForm />;
       }}
     </Formik>
   );

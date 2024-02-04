@@ -85,6 +85,86 @@ export const FormContextProvider = ({ children }) => {
   const dispatch = useDispatch();
   const [updateAccont, { isLoading }] = useUpdateAccountMutation();
   const [getAccount] = useLazyGetAccountQuery();
+  const [onboardingLinks, setOnboardingLinks] = useState([
+    {
+      title: "Add Title",
+      description: "Add Your Designation or Heading.",
+      href: "/onboarding/title",
+      check: "title",
+      required: true,
+      isSkippable: false,
+      icon: <IconListDetails />,
+      isCompleted: false,
+    },
+    {
+      title: "Add Experience ",
+      description: "Tell us about your experience",
+      href: "/onboarding/experience",
+      check: "experience",
+      required: true,
+      isSkippable: false,
+      icon: <IconCertificate2 />,
+      isCompleted: false,
+    },
+    {
+      title: "Add Education",
+      href: "/onboarding/education",
+      description: "Tell us about your Education Background",
+
+      check: "education",
+      required: true,
+      isSkippable: false,
+      icon: <IconSchool />,
+      isCompleted: false,
+    },
+    {
+      title: "Pick Languages",
+      href: "/onboarding/languages",
+      description: "Select Speaking Lanuage",
+
+      check: "languages",
+      required: true,
+      isSkippable: false,
+      icon: <IconLanguage />,
+      isCompleted: false,
+    },
+    {
+      title: "Obtain Skills",
+      href: "/onboarding/skills",
+      check: "skills",
+      required: true,
+      isSkippable: false,
+      icon: <IconListCheck />,
+      isCompleted: false,
+    },
+    {
+      title: "Write a Bio",
+      href: "/onboarding/description",
+      check: "profile-bio",
+      required: true,
+      isSkippable: false,
+      icon: <IconFileDescription />,
+      isCompleted: false,
+    },
+    {
+      title: "Rate",
+      href: "/onboarding/rate",
+      check: "freelancing-rates",
+      required: true,
+      isSkippable: false,
+      icon: <IconReceipt2 />,
+      isCompleted: false,
+    },
+    {
+      title: "Contact Details",
+      href: "/onboarding/contact-info",
+      check: "contact-details",
+      required: true,
+      isSkippable: false,
+      icon: <IconAddressBook />,
+      isCompleted: false,
+    },
+  ]);
 
   useEffect(() => {
     if (formData) {
@@ -97,78 +177,7 @@ export const FormContextProvider = ({ children }) => {
 
   // const { pathname } = router;
   const pathname = usePathname();
-  const onboardingLinks = [
-    {
-      title: "Add Title",
-      description: "Add Your Designation or Heading.",
-      href: "/onboarding/title",
-      check: "title",
-      required: true,
-      isSkippable: false,
-      icon: <IconListDetails />,
-    },
-    {
-      title: "Add Experience ",
-      description: "Tell us about your experience",
-      href: "/onboarding/experience",
-      check: "experience",
-      required: true,
-      isSkippable: false,
-      icon: <IconCertificate2 />,
-    },
-    {
-      title: "Add Education",
-      href: "/onboarding/education",
-      description: "Tell us about your Education Background",
-
-      check: "education",
-      required: true,
-      isSkippable: false,
-      icon: <IconSchool />,
-    },
-    {
-      title: "Pick Languages",
-      href: "/onboarding/languages",
-      description: "Select Speaking Lanuage",
-
-      check: "languages",
-      required: true,
-      isSkippable: false,
-      icon: <IconLanguage />,
-    },
-    {
-      title: "Obtain Skills",
-      href: "/onboarding/skills",
-      check: "skills",
-      required: true,
-      isSkippable: false,
-      icon: <IconListCheck />,
-    },
-    {
-      title: "Write a Bio",
-      href: "/onboarding/description",
-      check: "profile-bio",
-      required: true,
-      isSkippable: false,
-      icon: <IconFileDescription />,
-    },
-    {
-      title: "Rate",
-      href: "/onboarding/rate",
-      check: "freelancing-rates",
-      required: true,
-      isSkippable: false,
-      icon: <IconReceipt2 />,
-    },
-    {
-      title: "Contact Details",
-      href: "/onboarding/contact-info",
-      check: "contact-details",
-      required: true,
-      isSkippable: false,
-      icon: <IconAddressBook />,
-    },
-  ];
+  // const onboardingLinks =;
   console.log("pathname", pathname);
 
   useEffect(() => {
@@ -179,6 +188,17 @@ export const FormContextProvider = ({ children }) => {
         setActiveStepIndex(index);
       }
     });
+    const latestSteps = onboardingLinks?.map((link) => {
+      if (pathname === link.href) {
+        return {
+          ...link,
+          isCompleted: true,
+        };
+      }
+      return link;
+    });
+
+    setOnboardingLinks(latestSteps);
   }, [router]);
   const handleNext = () => {
     getAccount("").then((response) => {
@@ -187,6 +207,21 @@ export const FormContextProvider = ({ children }) => {
     });
     const { href } = onboardingLinks[activeStepIndex + 1];
     setActiveStepIndex(activeStepIndex + 1);
+    console.log("pathname", pathname);
+
+    const latestSteps = onboardingLinks?.map((link) => {
+      if (pathname === link.href) {
+        return {
+          ...link,
+          isCompleted: true,
+        };
+      }
+      return link;
+    });
+
+    setOnboardingLinks(latestSteps);
+    console.log("latestSteps", latestSteps);
+
     router.push(href);
   };
 

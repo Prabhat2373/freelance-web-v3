@@ -1,6 +1,7 @@
 "use client";
 
 import { Tooltip } from "@mantine/core";
+import classNames from "classnames";
 import { usePathname, useRouter } from "next/navigation";
 // import { useRouter } from "next/router";
 
@@ -77,7 +78,12 @@ const StepFormStepsContainer = ({
               <Tooltip label={step?.title} withArrow>
                 <div
                   data-tippy-content="Add your text"
-                  className="bg-gray-50   rounded-full items-center p-3 flex cursor-pointer"
+                  className={classNames(
+                    "bg-gray-50  rounded-full items-center p-3 flex cursor-pointer",
+                    {
+                      "bg-green-400": step?.isCompleted,
+                    }
+                  )}
                   onClick={() => handleStepClick(index, step)}
                 >
                   {/* <img src={step?.icon} loading="lazy" alt="" className="w-7" /> */}

@@ -1,6 +1,6 @@
 "use client";
 import AddExperienceForm from "@/components/onboarding/form/AddExperienceForm";
-import { Checkbox } from "@/components/ui/checkbox";
+// import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { useOnboardingForm } from "@/contexts/FormContext";
 import { addExperienceValidation } from "@/validators/onboarding/onboardingValidator";
@@ -11,7 +11,8 @@ import {
   useLazyDeleteExperienceQuery,
   useUpdateAccountMutation,
 } from "@/features/rtk/app/userApi";
-import { Button } from "@mantine/core";
+import { Button, Checkbox } from "@mantine/core";
+import StepsButtonLayout from "@/components/onboarding/steps/StepsButtonLayout";
 const ExperienceForm = () => {
   const { values, setFieldValue, ...formik } = useFormikContext();
   const experiences = values?.experience;
@@ -69,10 +70,10 @@ const ExperienceForm = () => {
             + Add Experience
           </Button>
         </div>
-        <div>
+        <div className="my-3">
           <Checkbox
             id="experience"
-            onCheckedChange={(checked) => {
+            onChange={(checked) => {
               if (checked) {
                 handleNoExperience();
               } else {
@@ -81,19 +82,11 @@ const ExperienceForm = () => {
             }}
             // onClick={handleNoExperience}
             name="experience"
+            label="No Experience"
           />
-          <Label htmlFor="experience">No Experience</Label>
+          {/* <Label htmlFor="experience">No Experience</Label> */}
         </div>
-        <div className="flex justify-center items-center py-12">
-          <Button
-            width="60%"
-            variant="filled"
-            className="flex px-24"
-            type="submit"
-          >
-            Next
-          </Button>
-        </div>
+   
       </>
     </Form>
   );

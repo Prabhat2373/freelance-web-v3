@@ -1,13 +1,14 @@
-import InputField from "@/components/inputs/InputField"
-import { DatePicker } from "@/components/ui/datePicker"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { ErrorMessage, Field, useFormikContext } from "formik"
-import Select from "react-select"
+import InputField from "@/components/inputs/InputField";
+import DatePicker from "@/components/ui/datePicker";
+
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { ErrorMessage, Field, useFormikContext } from "formik";
+import Select from "react-select";
 
 const AddEducationForm = ({ education, handleDeleteForm, index }) => {
-  const formik = useFormikContext()
+  const formik = useFormikContext();
 
   return (
     <div className="flex flex-col gap-3 mb-4 mt-4">
@@ -117,7 +118,7 @@ const AddEducationForm = ({ education, handleDeleteForm, index }) => {
         </button>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default AddEducationForm
+export default AddEducationForm;

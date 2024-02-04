@@ -1,18 +1,20 @@
-import InputField from "@/components/inputs/InputField"
-import { Checkbox } from "@/components/ui/checkbox"
-import { DatePicker } from "@/components/ui/datePicker"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { ErrorMessage, Field, useFormikContext } from "formik"
-import Select from "react-select"
+// import { Checkbox } from "@/components/ui/checkbox";
+import DatePicker from "@/components/ui/datePicker";
+// import DatePicker  from "@/components/ui/datePicker"
+
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@mantine/core";
+import { ErrorMessage, Field, useFormikContext } from "formik";
+import Select from "react-select";
 
 const AddExperienceForm = ({ experience, handleDeleteForm, index }) => {
-  const formik = useFormikContext()
+  const formik = useFormikContext();
   console.log(
     "experienceError",
     formik.errors.experience?.[index]?.company_name
-  )
-  console.log("start_date", formik.values?.experience?.[index]?.start_date)
+  );
+  console.log("start_date", formik.values?.experience?.[index]?.start_date);
 
   return (
     <div className="flex flex-col gap-3 mb-4 mt-4">
@@ -56,7 +58,7 @@ const AddExperienceForm = ({ experience, handleDeleteForm, index }) => {
               formik.setFieldValue(
                 `experience[${index}].employment_type`,
                 option?.value
-              )
+              );
             }}
             options={[
               { label: "Full Time", value: "full_time" },
@@ -98,9 +100,9 @@ const AddExperienceForm = ({ experience, handleDeleteForm, index }) => {
             name={`experience[${index}].end_date`}
             placeholder="Select Ended Date"
             onChange={(date) => {
-              console.log("date", date)
+              console.log("date", date);
 
-              formik.setFieldValue(`experience[${index}].end_date`, date)
+              formik.setFieldValue(`experience[${index}].end_date`, date);
             }}
             // value={
             //   !!formik.values?.experience?.[index]?.end_date
@@ -121,7 +123,7 @@ const AddExperienceForm = ({ experience, handleDeleteForm, index }) => {
         </div>
       </div>
       <div>
-        <Checkbox
+        {/* <Checkbox
           name={`experience[${index}].currently_working`}
           id={`experience[${index}].currently_working`}
           value={experience?.[index]?.currently_working}
@@ -129,12 +131,13 @@ const AddExperienceForm = ({ experience, handleDeleteForm, index }) => {
             formik.setFieldValue(
               `experience[${index}].currently_working`,
               value
-            )
+            );
           }}
         />
         <Label htmlFor={`experience[${index}].currently_working`}>
           Currently Working
-        </Label>
+        </Label> */}
+        <Checkbox label="Currently Working" className="cursor-pointer"  />
       </div>
       <div>
         <label>Description</label>
@@ -158,7 +161,7 @@ const AddExperienceForm = ({ experience, handleDeleteForm, index }) => {
         </button>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default AddExperienceForm
+export default AddExperienceForm;

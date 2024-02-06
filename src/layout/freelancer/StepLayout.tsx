@@ -22,7 +22,7 @@ const StepLayout = ({ title, subTitle, children }) => {
             <p>{subTitle}</p>
           </div> */}
           <div className=" ">{children}</div>
-          <StepsButtonLayout />
+          {/* <StepsButtonLayout /> */}
         </div>
       </Container>
       {/* <div className="flex justify-center items-center py-12">

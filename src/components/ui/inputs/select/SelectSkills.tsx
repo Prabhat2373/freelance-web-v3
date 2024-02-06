@@ -4,7 +4,7 @@ import Select from "../Select";
 import { useGetSkillsQuery } from "@/features/rtk/app/jobApi";
 import { useFormikContext } from "formik";
 
-const SelectSkills = ({ name }) => {
+const SelectSkills = ({ name, ...props }) => {
   const { data: skillsData } = useGetSkillsQuery("");
   const { setFieldValue, values } = useFormikContext();
   console.log("skillsData", skillsData);
@@ -28,6 +28,7 @@ const SelectSkills = ({ name }) => {
           console.log("selectVal", val);
           setFieldValue(name, val);
         }}
+        {...props}
       />
     </>
   );

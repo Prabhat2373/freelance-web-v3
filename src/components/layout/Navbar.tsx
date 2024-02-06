@@ -15,6 +15,7 @@ import {
 } from "@mantine/core";
 import { useColorScheme } from "@mantine/hooks";
 import { USER_TYPES } from "@/constants/app.constant";
+import { ThemeToggleButton } from "../ui/header/ThemeToggleButton";
 
 const Navbar = () => {
   // const =useColorScheme()
@@ -38,13 +39,13 @@ const Navbar = () => {
           </Link>
         </div>
         {/* <FileButton /> */}
-        <button
+        {/* <button
           onClick={() =>
             setColorScheme(computedColorScheme === "light" ? "dark" : "light")
           }
         >
           toggle theme
-        </button>
+        </button> */}
 
         <div>
           {!isLoggedIn ? (
@@ -97,6 +98,7 @@ const Navbar = () => {
                   onClick={() => setIsOpen((prev) => !prev)}
                 />
                 <ProfileMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+                <ThemeToggleButton />
               </div>
             </>
           )}

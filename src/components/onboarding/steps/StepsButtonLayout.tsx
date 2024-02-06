@@ -2,10 +2,10 @@ import Button from "@/components/buttons/Button";
 import { useOnboardingForm } from "@/contexts/FormContext";
 import React from "react";
 
-const StepsButtonLayout = () => {
+const StepsButtonLayout = ({ isLoading }) => {
   const { handleBack } = useOnboardingForm();
   return (
-    <div className="flex justify-center items-center py-12">
+    <div className="flex justify-center gap-4 items-center py-12">
       <Button
         width="60%"
         variant="outlined"
@@ -15,7 +15,13 @@ const StepsButtonLayout = () => {
       >
         Back
       </Button>
-      <Button width="60%" variant="filled" className="flex px-24" type="submit">
+      <Button
+        width="60%"
+        variant="filled"
+        isLoading={isLoading}
+        className="flex px-24"
+        type="submit"
+      >
         Next
       </Button>
     </div>

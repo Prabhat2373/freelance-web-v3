@@ -16,6 +16,7 @@ import Cookies from "js-cookie";
 import { LoginUser } from "@/features/slices/userReducer";
 import { useRouter } from "next/navigation";
 import { PasswordStrengthInput } from "@/components/inputs/ui/PasswordStrengthInput";
+import { PasswordInput } from "@mantine/core";
 // import { useNavigate } from "react-router-dom";
 
 const LoginContainer = () => {
@@ -105,7 +106,7 @@ const LoginContainer = () => {
                     className="text-red-500"
                   />
                   <Field
-                    as={InputField}
+                    as={PasswordInput}
                     label="Password"
                     name="password"
                     type="password"

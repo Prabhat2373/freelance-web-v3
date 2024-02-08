@@ -10,6 +10,7 @@ import Navbar from "@/components/layout/Navbar";
 import PageTransitionLayout from "@/containers/app/PageTransition";
 import { useColorScheme } from "@mantine/hooks";
 import { useMantineColorScheme } from "@mantine/core";
+import { ToastContainer } from "react-toastify";
 
 const GuestLayout = ({ children }) => {
   // const { setColorScheme } = useMantineColorScheme();
@@ -20,6 +21,7 @@ const GuestLayout = ({ children }) => {
       {/* <PageTransitionLayout> */}
       <div className="">{children}</div>
       {/* </PageTransitionLayout> */}
+      <ToastContainer />
       <Footer />
     </div>
   );

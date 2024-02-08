@@ -113,6 +113,7 @@ function DatePicker({ value, onChange, ...props }) {
       value={value}
       onChange={onChange}
       {...props}
+
     />
   );
 }

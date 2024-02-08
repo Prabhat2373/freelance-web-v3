@@ -97,6 +97,7 @@ const AddExperienceForm = ({ experience, handleDeleteForm, index }) => {
         <div className="flex flex-col w-full">
           <label>End Date</label>
           <DatePicker
+            disabled={formik.values?.experience?.[index]?.currently_working}
             name={`experience[${index}].end_date`}
             placeholder="Select Ended Date"
             onChange={(date) => {
@@ -122,22 +123,23 @@ const AddExperienceForm = ({ experience, handleDeleteForm, index }) => {
           />
         </div>
       </div>
-      <div>
-        {/* <Checkbox
-          name={`experience[${index}].currently_working`}
+      <div className="flex gap-2 items-center">
+        <Checkbox
           id={`experience[${index}].currently_working`}
-          value={experience?.[index]?.currently_working}
-          onCheckedChange={(value) => {
+          checked={experience?.[index]?.currently_working}
+          onChange={(e) => {
+            console.log("checkedValue", e);
+
             formik.setFieldValue(
               `experience[${index}].currently_working`,
-              value
+              e?.target?.checked
             );
           }}
         />
         <Label htmlFor={`experience[${index}].currently_working`}>
           Currently Working
-        </Label> */}
-        <Checkbox label="Currently Working" className="cursor-pointer"  />
+        </Label>
+        {/* <Checkbox label="Currently Working"  className="cursor-pointer"  /> */}
       </div>
       <div>
         <label>Description</label>

@@ -13,6 +13,7 @@ import {
 } from "@/features/rtk/app/userApi";
 import { Button, Checkbox } from "@mantine/core";
 import StepsButtonLayout from "@/components/onboarding/steps/StepsButtonLayout";
+import IconNoExperience from "@/components/icons/onboarding/IconNoExperience";
 const ExperienceForm = () => {
   const { values, setFieldValue, ...formik } = useFormikContext();
   const experiences = values?.experience;
@@ -44,12 +45,19 @@ const ExperienceForm = () => {
   };
 
   const handleNoExperience = () => {
-    setFieldValue("experience", formik.initialValues?.experience);
+    setFieldValue("experience", []);
   };
 
   return (
     <Form>
       <>
+        {!values?.experience?.length ? (
+          <div className="flex justify-center items-center">
+            <div className="w-1/2">
+              <IconNoExperience />
+            </div>
+          </div>
+        ) : null}
         {experiences.map((experience, index) => (
           <AddExperienceForm
             key={index}
@@ -59,24 +67,28 @@ const ExperienceForm = () => {
           />
         ))}
 
-        <div className="flex flex-col">
-          {/* <label htmlFor="experience">Add Experience:</label> */}
-          <Button
-            variant="outlined"
-            onClick={handleAddExperience}
-            className="flex px-24"
-            type="button"
-          >
-            + Add Experience
-          </Button>
-        </div>
+        {!values?.with_no_experience ? (
+          <div className="flex flex-col">
+            {/* <label htmlFor="experience">Add Experience:</label> */}
+            <Button
+              variant="outlined"
+              onClick={handleAddExperience}
+              className="flex px-24"
+              type="button"
+            >
+              + Add Experience
+            </Button>
+          </div>
+        ) : null}
         <div className="my-3">
           <Checkbox
             id="experience"
-            onChange={(checked) => {
-              if (checked) {
+            onChange={(e) => {
+              if (e?.target?.checked) {
                 handleNoExperience();
+                setFieldValue("with_no_experience", true);
               } else {
+                setFieldValue("with_no_experience", false);
                 handleAddExperience();
               }
             }}

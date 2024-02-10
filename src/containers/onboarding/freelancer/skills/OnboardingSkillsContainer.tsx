@@ -28,12 +28,12 @@ const OnboardingSkillsContainer = () => {
             <Form>
               <SelectSkills
                 name={"skills"}
-                value={values?.skills?.map((skill) => {
-                  return {
-                    label: skill?.skill_name,
-                    value: skill?._id,
-                  };
-                })}
+                // value={values?.skills?.map((skill) => {
+                //   return {
+                //     label: skill?.skill_name,
+                //     value: skill?._id,
+                //   };
+                // })}
               />
               <StepsButtonLayout isLoading={false} />
             </Form>

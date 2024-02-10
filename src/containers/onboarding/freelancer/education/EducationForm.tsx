@@ -1,14 +1,11 @@
 "use client";
 
 import AddEducationForm from "@/components/onboarding/form/AddEducationForm"; // Import the modified AddEducationForm
+import StepsButtonLayout from "@/components/onboarding/steps/StepsButtonLayout";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { useOnboardingForm } from "@/contexts/FormContext";
-import StepLayout from "@/layout/freelancer/StepLayout";
-import { addEducationValidation } from "@/validators/onboarding/onboardingValidator"; // Import the relevant validation schema
 import { Button } from "@mantine/core";
-import { Form, Formik, useFormikContext } from "formik";
-import { useState } from "react";
+import { Form, useFormikContext } from "formik";
 
 const EducationForm = () => {
   const formik = useFormikContext();
@@ -64,7 +61,7 @@ const EducationForm = () => {
             + Add Education
           </Button>
         </div>
-        <div>
+        <div className="flex gap-2 my-4">
           <Checkbox
             id="education"
             onCheckedChange={(checked) => {
@@ -77,7 +74,7 @@ const EducationForm = () => {
           />
           <Label htmlFor="education">No Education</Label>
         </div>
-        <div className="flex justify-center items-center py-12">
+        {/* <div className="flex justify-center items-center py-12">
           <Button
             width="60%"
             variant="filled"
@@ -86,7 +83,8 @@ const EducationForm = () => {
           >
             Next
           </Button>
-        </div>
+        </div> */}
+        <StepsButtonLayout />
       </>
     </Form>
   );

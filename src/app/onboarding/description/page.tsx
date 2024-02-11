@@ -1,7 +1,8 @@
+import DescriptionFormContainer from "@/containers/onboarding/freelancer/DescriptionFormContainer";
 import React from "react";
 
 const DescriptionIndex = () => {
-  return <div>DescriptionIndex</div>;
+  return <DescriptionFormContainer />;
 };
 
 export default DescriptionIndex;

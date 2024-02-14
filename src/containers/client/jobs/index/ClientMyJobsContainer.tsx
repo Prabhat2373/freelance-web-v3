@@ -28,10 +28,13 @@ const ClientMyJobsContainer = () => {
   ];
 
   const refetchJobs = (params?: any) => {
-    getClientJobs({
+    const payload = {
       drafts: activeMenu === ACTIVE_JOB_MENU.DRAFTS,
-      ...params,
-    }).then((res) => setJobs(res?.data?.data ?? []));
+      page: params?.page ?? 1,
+    };
+    console.log("payload", payload);
+
+    getClientJobs(payload).then((res) => setJobs(res?.data?.data ?? []));
   };
   useEffect(() => {
     refetchJobs();

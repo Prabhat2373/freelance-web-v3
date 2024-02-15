@@ -38,5 +38,6 @@ export const {
   useLoginMutation,
   useRegisterMutation,
   useGetJobListingQuery,
+  useLazyGetJobListingQuery
 
 } = mainApi;

@@ -10,15 +10,17 @@ const JobsFilterContainer = () => {
   console.log("paymentTypes", paymentTypes);
 
   return (
-    <div className="border border-border-primary">
+    <div className="border border-border-primary rounded-md">
       <div className="flex w-full justify-between py-3 border-b border-border-primary">
-        <div>
-          <Text fw={"bold"}>Filters</Text>
-        </div>
+        <Container className="flex justify-between w-full">
+          <div>
+            <Text fw={"bold"}>Filters</Text>
+          </div>
 
-        <Text fw={"bold"} c={"red"} className="cursor-pointer">
-          Clear All
-        </Text>
+          <Text fw={"bold"} c={"red"} className="cursor-pointer">
+            Clear All
+          </Text>
+        </Container>
       </div>
       <Container>
         <div className="border-b border-border-primary">

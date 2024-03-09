@@ -68,7 +68,7 @@ const StepFormStepsContainer = ({
   console.log("onboardingLinks", onboardingLinks);
 
   return (
-    <div className="w-full border border-gray-300 rounded-lg justify-around items-center mb-16 p-3 flex">
+    <div className="w-full border-2 border-[#CED4D9] rounded-lg justify-around items-center mb-16 p-3 flex">
       {onboardingLinks?.map((step, index) => (
         <React.Fragment key={index}>
           {/* ACTIVE TAB  */}
@@ -81,7 +81,8 @@ const StepFormStepsContainer = ({
                   className={classNames(
                     "bg-gray-50  rounded-full items-center p-3 flex cursor-pointer",
                     {
-                      "bg-green-400": step?.isCompleted,
+                      "bg-green-400":
+                        step?.isCompleted ?? index < activeStepIndex,
                     }
                   )}
                   onClick={() => handleStepClick(index, step)}
@@ -109,7 +110,7 @@ const StepFormStepsContainer = ({
             </div>
           )}
           {index !== onboardingLinks?.length - 1 && (
-            <div className="w-0.5  bg-opacity-48 bg-gray ml-2 mr-2 h-[50px]" />
+            <div className="w-[1px]  bg-opacity-48 bg-gray ml-2 mr-2 h-[50px]" />
           )}
         </React.Fragment>
       ))}

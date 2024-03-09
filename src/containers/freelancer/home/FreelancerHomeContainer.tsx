@@ -1,6 +1,6 @@
 "use client";
 
-import BestMatchIndex from "@/app/fl/dashboard/@views/bestmatch/page";
+// import BestMatchIndex from "@/app/fl/dashboard/@views/bestmatch/page";
 import Button from "@/components/buttons/Button";
 import SearchBox from "@/components/home/SearchBox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -20,7 +20,6 @@ const FreelancerHomeContainer = (props) => {
   return (
     <div className="relative">
       <div className="bg-blue h-[320px] w-full absolute top-0"></div>
-
       <div className="relative z-10">
         <div className="grid grid-cols-12 gap-5 px-28 py-11">
           <div className="feed col-span-8">

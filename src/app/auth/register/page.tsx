@@ -5,10 +5,12 @@ import { Providers } from "@/features/rtk/provider";
 const RegisterIndex = () => {
   return (
     <Providers>
-      <FormContextProvider>
-        <RegisterContainer />
-      </FormContextProvider>
+     
+    <FormContextProvider>
+    <RegisterContainer />
+  </FormContextProvider>
     </Providers>
+
   );
 };
 

@@ -71,6 +71,40 @@ function RegisterContainer() {
 
           return (
             <Form>
+              <h1 className="text-lg font-semibold">{`I'm A:`}</h1>
+              <div className="flex gap-4 w-full my-3">
+                <label
+                  className={`flex gap-2 w-full border  transition-all duration-200 rounded-md text-lg font-medium border-opacity-50 cursor-pointer border-1 p-3 border-gray ${
+                    values?.role === "freelancer"
+                      ? "bg-pink-50 bg-opacity-50"
+                      : ""
+                  }`}
+                >
+                  <Field
+                    type="radio"
+                    name="role"
+                    className="accent-red-500 ml-3"
+                    value="freelancer"
+                    required
+                  />
+                  Freelancer
+                </label>
+
+                <label
+                  className={`flex gap-2 w-full transition-all duration-200 border rounded-md text-lg font-medium border-opacity-50 cursor-pointer border-1 p-3 border-gray ${
+                    values?.role === "client" ? "bg-pink-50 bg-opacity-50" : ""
+                  }`}
+                >
+                  <Field
+                    type="radio"
+                    name="role"
+                    className="accent-red-500"
+                    value="client"
+                    required
+                  />
+                  Client
+                </label>
+              </div>
               <div className="flex gap-4 ">
                 <div>
                   <InputField
@@ -108,40 +142,6 @@ function RegisterContainer() {
               </div>
               <div>
                 <PasswordStrengthInput name={"password"} />
-              </div>
-              <h1 className="text-lg font-semibold">{`I'm A:`}</h1>
-              <div className="flex gap-4 w-full my-3">
-                <label
-                  className={`flex gap-2 w-full border  transition-all duration-200 rounded-md text-lg font-medium border-opacity-50 cursor-pointer border-1 p-3 border-gray ${
-                    values?.role === "freelancer"
-                      ? "bg-pink-50 bg-opacity-50"
-                      : ""
-                  }`}
-                >
-                  <Field
-                    type="radio"
-                    name="role"
-                    className="accent-red-500 ml-3"
-                    value="freelancer"
-                    required
-                  />
-                  Freelancer
-                </label>
-
-                <label
-                  className={`flex gap-2 w-full transition-all duration-200 border rounded-md text-lg font-medium border-opacity-50 cursor-pointer border-1 p-3 border-gray ${
-                    values?.role === "client" ? "bg-pink-50 bg-opacity-50" : ""
-                  }`}
-                >
-                  <Field
-                    type="radio"
-                    name="role"
-                    className="accent-red-500"
-                    value="client"
-                    required
-                  />
-                  Client
-                </label>
               </div>
 
               <Button type="submit" isLoading={isRegistrationLoading}>

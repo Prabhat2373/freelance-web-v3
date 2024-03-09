@@ -10,6 +10,9 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  
+  distDir: process.env.BUILD_DIR || '.next',
+
 };
 
 module.exports = nextConfig;

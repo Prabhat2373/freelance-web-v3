@@ -72,7 +72,7 @@ const ContactInfoFormContainer = () => {
   console.log(
     "formData",
     formData,
-    formData?.user_account.username?.split(" ")
+    formData?.user_account?.username?.split(" ")
   );
 
   const [register, { data: registerResponse }] = useRegisterMutation();
@@ -288,3 +288,11 @@ const ContactInfoFormContainer = () => {
 };
 
 export default ContactInfoFormContainer;
+
+// import React from "react";
+
+// const ContactInfoFormContainer = () => {
+//   return <div>ContactInfoFormContainer</div>;
+// };
+
+// export default ContactInfoFormContainer;

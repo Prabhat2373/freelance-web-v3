@@ -1,7 +1,10 @@
+import Heading from "@/components/elements/Heading";
 import AttachmentDropzoneContainer from "@/components/jobs/AttachmentDropzoneContainer";
 import ExpectedDuration from "@/components/jobs/ExpectedDuration";
 import ExperienceLevelContainer from "@/components/jobs/ExperienceLevelContainer";
 import JobBudgetContainer from "@/components/jobs/JobBudgetContainer";
+import GridWrapper from "@/components/ui/GridWrapper";
+import { Button } from "@/components/ui/button";
 import SelectSkills from "@/components/ui/inputs/select/SelectSkills";
 import {
   useCreateJobMutation,
@@ -11,7 +14,7 @@ import {
 } from "@/features/rtk/app/jobApi";
 import { isSuccess } from "@/utils/utils";
 import {
-  Button,
+  // Button,
   Container,
   Input,
   Paper,
@@ -64,32 +67,42 @@ const CreateJobForm = () => {
             return (
               <Form>
                 <div className="flex flex-col gap-4">
-                  <div>
-                    <Input.Wrapper label="Job title">
-                      <Field
-                        as={Input}
-                        name="job_title"
-                        // onChange={handleChange}
-                        placeholder="ex, need Web devloper for figma"
-                      />
-                    </Input.Wrapper>
-                  </div>
-                  <div>
-                    <Textarea
-                      name="job_description"
-                      label="Describe about the project"
-                      onChange={handleChange}
-                      placeholder="writer here"
+                  <GridWrapper
+                    title={"Job Title"}
+                    description={"A job title must describe one position only"}
+                  >
+                    <Field
+                      as={Input}
+                      name="job_title"
+                      // onChange={handleChange}
+                      placeholder="ex, need Web devloper for figma"
                     />
+                  </GridWrapper>
+
+                  <div>
+                    <GridWrapper
+                      title={"Description"}
+                      description={` Provide a short description about the job. Keep it
+                          short and to the point.`}
+                    >
+                      <Textarea
+                        name="job_description"
+                        // label="Describe about the project"
+                        onChange={handleChange}
+                        placeholder="writer here"
+                      />
+                    </GridWrapper>
                   </div>
-                  <div className="pb-5 border-b border-border-primary  ">
+                  <GridWrapper title={"Skills"} description={"Select Skills"}>
                     <SelectSkills name={"required_skills"} />
-                  </div>
+                  </GridWrapper>
                   <ExpectedDuration />
                   <ExperienceLevelContainer />
 
-                  <div className="my-3">
-                    <Text>Complexity</Text>
+                  <GridWrapper
+                    title="Complexity"
+                    description="Choose the relavant Complexity"
+                  >
                     <div className="flex gap-2 py-2">
                       {complexities?.map((mode) => {
                         return (
@@ -106,11 +119,11 @@ const CreateJobForm = () => {
                         );
                       })}
                     </div>
-                  </div>
+                  </GridWrapper>
                   <JobBudgetContainer />
                   <AttachmentDropzoneContainer />
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 justify-end">
                   <Button
                     type="submit"
                     onClick={() => setFieldValue("draft", false)}

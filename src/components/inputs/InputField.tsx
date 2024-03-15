@@ -1,10 +1,11 @@
 import { capitalizeFirst } from "@/utils/utils";
 import { ErrorMessage, Field } from "formik";
 import React from "react";
-import { Input } from "../ui/input";
+// import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import InputError from "./InputError";
 import Asterisk from "./ui/Asterisk";
+import { Input } from "@mantine/core";
 
 interface InputFieldProps
   extends React.DetailedHTMLProps<
@@ -28,9 +29,10 @@ const InputField = (props: InputFieldProps) => {
         </Label>
       ) : null}
       <Field
-        as={Input}
-        placeholder={`${props.placeholder ?? `Enter ${props.label}`}`}
         {...props}
+        as={Input}
+        required={false}
+        placeholder={`${props.placeholder ?? `Enter ${props.label}`}`}
       />
       <ErrorMessage
         name={props.name}

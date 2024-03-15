@@ -1,58 +1,3 @@
-// "use client";
-
-// import { Container, Input } from "@mantine/core";
-// import { Field, Form, Formik } from "formik";
-// import React from "react";
-
-// const ContactInfoFormContainer = () => {
-//   const initialValues = {
-//     first_name: "",
-//     last_name: "",
-//     address: "",
-//     city: "",
-//     country: "",
-//     state: "",
-//     phone: "",
-//   };
-//   return (
-//     <div>
-//       <Container>
-//         <Formik>
-//           {({}) => {
-//             return (
-//               <Form>
-//                 <div className="flex flex-col">
-//                   <div className="flex gap-3">
-//                     <Field
-//                       component={Input}
-//                       name="first_name"
-//                       placeholder="Enter First Name"
-//                     />
-//                     <Field
-//                       component={Input}
-//                       name="last_name"
-//                       placeholder="Enter Last Name"
-//                     />
-//                   </div>
-//                   <div className="">
-//                     <Field
-//                       component={Input}
-//                       name="address"
-//                       placeholder="Enter First Name"
-//                     />
-//                   </div>
-//                 </div>
-//               </Form>
-//             );
-//           }}
-//         </Formik>
-//       </Container>
-//     </div>
-//   );
-// };
-
-// export default ContactInfoFormContainer;
-
 "use client";
 import React, { useState } from "react";
 import { Formik, Field, Form } from "formik";
@@ -69,16 +14,16 @@ import { useRegisterMutation } from "@/features/rtk/app/mainApi";
 const ContactInfoFormContainer = () => {
   const { formData, setFormData, activeStepIndex, setActiveStepIndex } =
     useOnboardingForm();
-  console.log(
-    "formData",
-    formData,
-    formData?.user_account?.username?.split(" ")
-  );
+  // console.log(
+  //   "formData",
+  //   formData,
+  //   formData?.user_account?.username?.split(" ")
+  // );
 
   const [register, { data: registerResponse }] = useRegisterMutation();
   const initialValues = {
-    firstName: formData?.user_account.username?.split(" ")[0] || "",
-    lastName: formData?.user_account.username?.split(" ")[1] || "",
+    firstName: formData?.user_account?.username?.split(" ")[0] || "",
+    lastName: formData?.user_account?.username?.split(" ")[1] || "",
     email: formData?.user_account?.email || "",
     address: formData.address || "",
     zip: formData.zip || "",
@@ -88,15 +33,15 @@ const ContactInfoFormContainer = () => {
   };
 
   const validationSchema = Yup.object().shape({
-    // firstName: Yup.string().required("First Name is required"),
-    // lastName: Yup.string().required("Last Name is required"),
-    // email: Yup.string()
-    //   .email("Invalid email address")
-    //   .required("Email is required"),
+    firstName: Yup.string().required("First Name is required"),
+    lastName: Yup.string().required("Last Name is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
     address: Yup.string().required("Address is required"),
-    // zip: Yup.string().required("ZIP code is required"),
-    // country: Yup.string().required("Country is required"),
-    // city: Yup.string().required("City is required"),
+    zip: Yup.string().required("ZIP code is required"),
+    country: Yup.string().required("Country is required"),
+    city: Yup.string().required("City is required"),
     phone: Yup.string().required("Phone number is required"),
   });
   const [imagePreview, setImagePreview] = useState<string | null>(null);

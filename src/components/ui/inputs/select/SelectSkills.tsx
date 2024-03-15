@@ -22,7 +22,7 @@ const SelectSkills = ({ name, ...props }) => {
       <Select
         isMulti
         options={skillsOptions}
-        label={"Skills"}
+        // label={"Skills"}
         placeholder={"Select Skills"}
         onChange={(val) => {
           console.log("selectVal", val);
